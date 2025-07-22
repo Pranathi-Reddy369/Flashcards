@@ -1,0 +1,29 @@
+<div *ngIf="videos && videos.length > 0; else noVideos" class="container mt-3">
+  <div class="row g-3">
+    <div *ngFor="let video of videos" class="col-12">
+      <a [href]="video.url" target="_blank" class="text-decoration-none text-dark">
+        <div class="d-flex align-items-center bg-white rounded-4 shadow-sm p-3 border video-card-hover">
+          
+          <!-- Thumbnail with no margin -->
+          <img
+            [src]="'https://img.youtube.com/vi/' + extractYouTubeId(video.url) + '/mqdefault.jpg'"
+            alt="Thumbnail"
+            class="rounded-start"
+            style="width: 150px; height: auto"
+          />
+
+          <!-- Details -->
+          <div class="flex-grow-1 ps-3">
+            <h6 class="mb-1 fw-semibold">{{ video.title }}</h6>
+            <div class="text-primary small mb-1">{{ video.url }}</div>
+            <div class="text-muted"><i class="bi bi-clock me-1"></i> {{ video.duration }}</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<ng-template #noVideos>
+  <p class="text-muted">No videos available for this topic.</p>
+</ng-template>

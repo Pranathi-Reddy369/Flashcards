@@ -1,0 +1,61 @@
+ <!-- NAVBAR -->
+<nav class="navbar fixed-top">
+  <div class="navbar-left">
+    <span class="brand-text">Learn <strong>Now</strong></span>
+  </div>
+  <div class="navbar-right">
+    <a class="signup-btn" routerLink="/signup">Sign up</a>
+  </div>
+</nav>
+
+ <!-- LOGIN LAYOUT SPLIT -->
+<div class="login-split-layout">
+   <!-- Left Image Area -->
+  <div class="login-image-side"></div>
+
+   <!-- Right Login Form -->
+  <div class="login-container">
+    <div class="login-card">
+      <h2>
+        Log in to <span>your <span class="highlight">account</span></span>
+      </h2>
+      <p class="sub-text">Don't have an account? <a routerLink="/register">Sign up</a></p>
+
+      <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="loginData.email"
+          required
+          placeholder="Email or Phone Number"
+        />
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="loginData.password"
+          required
+          placeholder="Password"
+        />
+
+        <button type="submit" class="login-btn">
+          Log In <span class="arrow">→</span>
+        </button>
+
+        <a class="forgot">Forgot password?</a>
+
+        <div class="divider">
+          <span>or</span>
+        </div>
+
+        <button class="google-btn" type="button">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" />
+          Sign in with Google
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+  

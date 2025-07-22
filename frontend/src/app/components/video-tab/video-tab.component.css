@@ -1,0 +1,6 @@
+
+img {
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+  object-fit: cover;
+}

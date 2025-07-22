@@ -1,0 +1,16 @@
+<div class="container mt-4">
+  <h3>🔖 Your Bookmarked Flashcards</h3>
+  <div *ngIf="flashcards.length > 0; else emptyState">
+    <div class="card mt-3" *ngFor="let card of flashcards">
+      <div class="card-body">
+        <h5 class="card-title">{{ card.setTitle }}</h5>
+        <p><strong>Q:</strong> {{ card.question }}</p>
+        <p><strong>A:</strong> {{ card.answer }}</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #emptyState>
+    <p class="text-muted mt-4">You haven't bookmarked any flashcards yet.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,53 @@
+<div class="container py-5">
+  <h2 class="text-center mb-4">Explore All Flashcards</h2>
+  <div class="row g-4">
+    <div *ngFor="let set of filteredSets" class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card flashcard-card h-100 position-relative">
+        <!-- Delete button -->
+        <button class="delete-icon-btn" (click)="deleteSet(set._id!)" title="Delete">
+          <i class="bi bi-x"></i>
+        </button>
+
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-dark">{{ set.title }}</h5>
+          <p class="card-text text-muted small">{{ set.description }}</p>
+
+          <div class="text-muted small mb-2">
+            Easy: {{ countByDifficulty(set.cards, 'Easy') }} |
+            Medium: {{ countByDifficulty(set.cards, 'Medium') }} |
+            Hard: {{ countByDifficulty(set.cards, 'Hard') }}
+          </div>
+
+          <!-- Tags -->
+          <div class="mb-2">
+            <span *ngFor="let tag of set.tags" class="badge bg-light text-secondary border me-1">
+              #{{ tag }}
+            </span>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress mb-2" style="height: 6px;">
+            <div
+              class="progress-bar bg-info"
+              role="progressbar"
+              [style.width.%]="getProgress(set.cards)"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+
+          <div class="text-muted small mb-3">
+            {{ countReviewed(set.cards) }} of {{ set.cards.length }} reviewed ({{ getProgress(set.cards) }}%)
+          </div>
+
+          <div class="mt-auto d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <a class="btn btn-sm btn-outline-primary flex-fill" [routerLink]="['/view', set._id]">View</a>
+            <button class="icon-btn edit-btn" [routerLink]="['/edit', set._id]" title="Edit">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

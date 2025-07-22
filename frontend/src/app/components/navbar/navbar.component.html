@@ -1,0 +1,116 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 py-2">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+
+    <!-- Logo -->
+    <div class="d-flex align-items-center">
+     <a routerLink="/home" class="brand-text">Learn <strong>Now</strong></a>
+    </div>
+    <!-- Centered Search -->
+    <form class="search-box mx-auto w-50 d-flex align-items-center bg-light px-3 py-1 rounded-3">
+      <i class="bi bi-search text-muted me-2"></i>
+      <input
+        type="search"
+        class="form-control border-0 bg-transparent"
+        placeholder="Search for flashcards, topics, tags..."
+        [(ngModel)]="searchTerm"
+        name="search"
+        (ngModelChange)="onSearchChange()"
+      />
+    </form>
+
+    <!-- Right icons and dropdowns -->
+    <div class="d-flex align-items-center gap-3">
+      <!-- Notifications -->
+      <div ngbDropdown>
+        <button class="btn btn-icon" ngbDropdownToggle>
+          <i class="bi bi-bell fs-5"></i>
+        </button>
+        <div ngbDropdownMenu class="p-4 text-center">
+          <i class="bi bi-bell-fill fs-1 text-muted mb-3"></i>
+          <h6 class="fw-semibold">Updates to keep you on track</h6>
+          <p class="small text-muted">See personalised study reminders and updates from enrolled content.</p>
+        </div>
+      </div>
+         <!-- ✅ Create Set Button -->
+          <a routerLink="/create" class="btn btn-icon" title="Create Set">
+              <i class="bi bi-journal-plus fs-5 text-muted"></i>
+          </a>
+
+<!-- Bookmarks -->
+<a routerLink="/bookmarks" class="btn btn-icon" title="Bookmarks">
+  <i class="bi bi-bookmarks fs-5 text-muted"></i>
+</a>
+
+
+
+      <!-- Gift icon -->
+      <a routerLink="/refer" class="btn btn-icon" title="Refer">
+  <i class="bi bi-gift-fill text-danger fs-5"></i>
+</a>
+
+      <!-- Streak and Activity -->
+<div ngbDropdown>
+  <button class="btn btn-light rounded-pill d-flex align-items-center gap-2 px-3" ngbDropdownToggle>
+    <span class="text-muted">{{ todayActivity.minutesWatched }} min</span>
+    <span class="text-muted">🔥 {{ streakStats.currentStreak }} days</span>
+  </button>
+  <div ngbDropdownMenu class="streak-dropdown p-4">
+    <h6 class="mb-3">Today</h6>
+    <div class="d-flex justify-content-between mb-2">
+      <div><strong class="text-primary">{{ todayActivity.minutesWatched }} / 60</strong><br /><small>MINUTES WATCHED</small></div>
+      <div><strong class="text-warning">{{ todayActivity.questionsAttempted }} / 10</strong><br /><small>QUESTIONS ATTEMPTED</small></div>
+    </div>
+    <hr />
+    <h6>Streak</h6>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div><strong class="text-warning">{{ streakStats.currentStreak }} days</strong><br /><small>CURRENT</small></div>
+      <div><strong>{{ streakStats.longestStreak }} days</strong><br /><small>LONGEST</small></div>
+      <i class="bi bi-fire fs-3 text-primary"></i>
+    </div>
+    <button class="btn btn-outline-secondary w-100 btn-sm">See All Activity</button>
+  </div>
+</div>
+
+
+      <!-- Profile Dropdown -->
+      <div ngbDropdown>
+        <button class="btn btn-light rounded-circle p-1" ngbDropdownToggle>
+          <i class="bi bi-person-circle fs-4"></i>
+        </button>
+        <div ngbDropdownMenu class="dropdown-menu-end p-2">
+          <a class="dropdown-item" routerLink="/profile" ><i class="bi bi-person me-2"></i>Profile</a>
+          <div class="d-flex justify-content-between align-items-center px-3 py-2">
+            <span><i class="bi bi-moon me-2"></i>Dark mode</span>
+            <div class="form-check form-switch m-0">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="darkMode" (change)="toggleTheme()" />
+            </div>
+          </div>
+<a class="dropdown-item" (click)="openReport()"> <i class="bi bi-exclamation-circle me-2"></i>Report an issue</a>
+          <a class="dropdown-item" routerLink="/refer">
+  <i class="bi bi-gift me-2"></i>Refer your friends
+</a>
+          <a class="dropdown-item " routerLink="/deleted-sets"><i class="bi bi-trash3 me-2"></i>Deleted Sets</a>
+
+          <a class="dropdown-item" routerLink="/feedback-form" ><i class="bi bi-gift me-2"></i>Submit feedback</a>
+          <a class="dropdown-item text-danger" routerLink="" ><i class="bi bi-box-arrow-left me-2"></i>Sign out</a>
+          <hr />
+          <a class="dropdown-item small text-center text-muted" (click)="openTerms(termsModal)">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Terms Modal -->
+<ng-template #termsModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Terms & Conditions</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <p>Welcome to Learn Now. By using this platform, you agree to the following terms and conditions...</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="modal.close()">Close</button>
+  </div>
+</ng-template>

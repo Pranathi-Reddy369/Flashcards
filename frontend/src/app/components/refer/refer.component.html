@@ -1,0 +1,78 @@
+<!-- refer.component.html -->
+<div class="refer-container">
+  <!-- Section 1: Refer & Earn Banner -->
+  <section class="refer-banner">
+    <h1>Refer friends, win exciting rewards</h1>
+    <p>For every successful referral you can win exciting rewards</p>
+    <div class="code-box">
+      <span class="code">{{ referralCode }}</span>
+      <button class="btn btn-outline-secondary" (click)="copyCode()">
+        <i class="bi bi-link-45deg"></i> Copy
+      </button>
+      <button class="btn btn-outline-primary" (click)="shareCode()">
+        <i class="bi bi-share-fill"></i> Share
+      </button>
+    </div>
+    <div class="voucher-box">
+      <i class="bi bi-gift-fill fs-1"></i>
+      <div>
+        <h4>Up to ₹2,500</h4>
+        <p>Vouchers for every referral of ₹2,500+</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Rewards Panel -->
+  <section class="rewards-panel">
+    <div class="rewards-box">
+      <p class="mb-1">Your rewards</p>
+      <div class="reward-item">
+        ₹{{ userRewards.rewards.amazonVoucher }} <span>Amazon voucher</span>
+      </div>
+      <div class="reward-item">
+        {{ userRewards.rewards.plusMonths }} Month <span>Plus subscription</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <p>Rewards will be disbursed after first two successful referrals</p>
+    </div>
+  </section>
+
+  <!-- Section 3: Hall of Fame -->
+  <section class="hall-of-fame">
+    <h3>Monthly hall of fame</h3>
+    <ul class="leaderboard">
+      <li *ngFor="let ref of referrals | slice:0:5">
+        <img [src]="ref.avatar || 'https://i.pravatar.cc/40'" alt="Avatar">
+        <span>{{ ref.referredUser }}</span>
+        <span class="badge">₹5000</span>
+      </li>
+      <li class="current-user">You - Refer & enter the hall of fame</li>
+    </ul>
+  </section>
+
+  <!-- Section 4: Laptop Winners -->
+  <section class="laptop-winners">
+    <h3>Laptop winners</h3>
+    <div class="winners-grid">
+      <div *ngFor="let winner of laptopWinners" class="winner-card">
+        <img [src]="winner.avatar || 'https://i.pravatar.cc/60'" alt="Winner">
+        <strong>{{ winner.name }}</strong>
+        <span>{{ winner.referrals }} REFERRALS</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Sidebar FAQ -->
+<aside class="refer-sidebar">
+  <ul>
+    <li><a >Reward details</a></li>
+    <li><a >Terms and conditions</a></li>
+    <li><a >Frequently asked questions</a></li>
+  </ul>
+  <div class="subscribe-box">
+    <p><strong>Subscribe to double your rewards</strong></p>
+    <button class="btn btn-success">Get Subscription</button>
+  </div>
+</aside>

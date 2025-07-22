@@ -1,0 +1,45 @@
+<div class="feedback-form" *ngIf="!submitted">
+  <h3>💬 Send us your feedback</h3>
+
+  <form (ngSubmit)="submitForm()" #form="ngForm">
+    <input
+      type="text"
+      [(ngModel)]="name"
+      name="name"
+      placeholder="Your name"
+      required
+    />
+
+    <input
+      type="email"
+      [(ngModel)]="email"
+      name="email"
+      placeholder="Your email"
+      required
+    />
+
+    <textarea
+      [(ngModel)]="message"
+      name="message"
+      placeholder="Your feedback..."
+      rows="4"
+      required
+    ></textarea>
+
+    <div class="stars">
+      <span
+        *ngFor="let star of [1, 2, 3, 4, 5]"
+        (click)="rating = star"
+        [class.filled]="star <= rating"
+        >★</span
+      >
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<div class="thank-you" *ngIf="submitted">
+  <h4>✅ Thank you for your feedback!</h4>
+  <p>We appreciate your time.</p>
+</div>

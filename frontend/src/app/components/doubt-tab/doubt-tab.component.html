@@ -1,0 +1,39 @@
+<div class="doubt-section">
+  <h5 class="mb-3">🗨️ Ask Your Doubts</h5>
+
+  <div class="input-group mb-4">
+    <input type="text" [(ngModel)]="newDoubt" class="form-control" placeholder="Type your doubt..." />
+    <button class="btn btn-primary" (click)="addDoubt()">Post</button>
+  </div>
+
+  <div *ngFor="let thread of doubts" class="doubt-card">
+    <div class="d-flex justify-content-between align-items-start">
+      <div>
+        <p><strong>{{ thread.user }}</strong>: {{ thread.question }}</p>
+        <button
+  class="btn btn-sm"
+  [ngClass]="thread.likedByUser ? 'btn-success' : 'btn-outline-secondary'"
+  (click)="upvote(thread.id)"
+>
+  <i class="bi" [ngClass]="thread.likedByUser ? 'bi-hand-thumbs-up-fill' : 'bi-hand-thumbs-up'"></i>
+  {{ thread.upvotes }}
+</button>
+
+      </div>
+    </div>
+
+    <div class="mt-2 ms-3" *ngFor="let response of thread.responses">
+      <p class="small"><strong>{{ response.user }}</strong>: {{ response.answer }}</p>
+    </div>
+
+    <div class="input-group input-group-sm mt-2">
+      <input
+        type="text"
+        [(ngModel)]="replyMap[thread.id]"
+        class="form-control"
+        placeholder="Reply to this doubt..."
+      />
+      <button class="btn btn-secondary" (click)="addReply(thread.id)">Reply</button>
+    </div>
+  </div>
+</div>

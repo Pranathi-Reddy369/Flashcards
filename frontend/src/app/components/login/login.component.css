@@ -1,0 +1,279 @@
+/* Global Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  background-color: #f4f8fb;
+  overflow-x: hidden;
+}
+
+/* Split Layout */
+.login-split-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Left Image Side - ✅ updated image */
+.login-image-side {
+  flex: 1;
+  background-image: url('https://courses.iid.org.in/public/frontend/images/register.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Right Form Side */
+.login-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  animation: fadeIn 0.8s ease-in;
+  background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  background: white;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  animation: fadeIn 0.8s ease-in;
+}
+
+/* Navbar */
+
+
+
+
+
+
+
+
+/* Form Elements */
+input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f9fafb;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #5ac8c8;
+  outline: none;
+  box-shadow: 0 0 4px #5ac8c8;
+}
+
+.login-btn {
+  margin-top: 1rem;
+  width: 100%;
+  background: #004d40;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #002f2f;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.login-btn:hover .arrow {
+  transform: translateX(5px);
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+  color: #1f2937;
+}
+
+.highlight {
+  color: #5ac8c8;
+}
+
+.sub-text {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.sub-text a {
+  color: #5ac8c8;
+  text-decoration: none;
+}
+
+.forgot {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.divider {
+  margin-top: 1.5rem;
+  position: relative;
+  text-align: center;
+  color: #888;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.divider span {
+  padding: 0 10px;
+  background: white;
+}
+
+/* Google button */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  border-radius: 8px;
+  background: #f1f5f9;
+  border: 1px solid #ccc;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.google-btn:hover {
+  background: #e2e8f0;
+}
+
+.google-btn img {
+  height: 20px;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .login-split-layout {
+    flex-direction: column;
+  }
+
+  .login-image-side {
+    display: none;
+  }
+
+  .login-container {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+
+  .login-card {
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+/* Navbar Base */
+.navbar {
+  background-color: #ffffff;
+  padding: 0.75rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Brand Text */
+.navbar-left .brand-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #004d40;
+  letter-spacing: -0.5px;
+}
+
+.navbar-left .brand-text strong {
+  color: #009688;
+}
+
+/* Right side (Login button) */
+.navbar-right .signup-btn {
+  padding: 8px 18px;
+  border: 2px solid #004d40;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #004d40;
+  transition: all 0.3s ease;
+}
+
+.navbar-right .signup-btn:hover {
+  background-color: #004d40;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 77, 64, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+  }
+}

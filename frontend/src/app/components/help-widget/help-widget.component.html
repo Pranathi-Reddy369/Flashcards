@@ -1,0 +1,26 @@
+<!-- Floating Help Button -->
+<div class="help-button" (click)="toggleMenu()">
+  <span class="question-icon">?</span>
+</div>
+
+<!-- Popup Menu -->
+<div class="help-menu" *ngIf="menuOpen">
+  <div class="help-section">
+    <h4>GETTING STARTED</h4>
+    <ul>
+      <li><i class="icon">❓</i> Help center</li>
+      <li>
+          <a routerLink="/help-assistant"><i class="icon">💬</i> Help assistant</a>
+      </li>
+     <li>
+        <a routerLink="/feedback-form"><i class="icon">💡</i> Submit feedback / Request feature</a>
+    </li>
+
+    </ul>
+    <hr />
+    <h4>GENERAL</h4>
+    <ul>
+      <li><i class="icon">ℹ️</i> What's new</li>
+    </ul>
+  </div>
+</div>

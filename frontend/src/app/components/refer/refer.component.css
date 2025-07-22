@@ -1,0 +1,202 @@
+/* refer.component.css */
+.refer-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+  background: #fff9f3;
+  border-radius: 10px;
+}
+
+.refer-banner {
+  text-align: center;
+  background: #fff3e0;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.refer-banner h1 {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #3b2f2f;
+}
+
+.refer-banner p {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.code-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.code-box .code {
+  font-weight: bold;
+  background: #fff;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.voucher-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.voucher-box h4 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.voucher-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Rewards Panel */
+.rewards-panel {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.rewards-box {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 280px;
+}
+
+.reward-item {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.reward-item span {
+  display: block;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.info-card {
+  background: #fffbe6;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid #ffc107;
+  border-radius: 8px;
+  max-width: 300px;
+}
+
+/* Hall of Fame */
+.hall-of-fame {
+  margin-top: 2rem;
+}
+
+.leaderboard {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.leaderboard li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.leaderboard li img {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  margin-right: 10px;
+}
+
+.leaderboard .badge {
+  background: #ffcc80;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* Laptop Winners */
+.laptop-winners {
+  margin-top: 2rem;
+}
+
+.winners-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.winner-card {
+  text-align: center;
+  background: #fffaf0;
+  padding: 1rem;
+  border-radius: 12px;
+  width: 140px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.winner-card img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+/* Sidebar */
+.refer-sidebar {
+  position: fixed;
+  top: 80px;
+  right: 40px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 250px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.refer-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.refer-sidebar ul li {
+  margin-bottom: 0.75rem;
+}
+
+.refer-sidebar ul li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.subscribe-box {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.subscribe-box p {
+  font-size: 0.9rem;
+}
+
+.subscribe-box .btn {
+  margin-top: 0.5rem;
+}

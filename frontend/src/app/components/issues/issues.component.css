@@ -1,0 +1,82 @@
+.report-container {
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  padding: 3rem 2rem;
+  background-color: #ffffff;
+  box-shadow: -6px 0 20px rgba(0, 0, 0, 0.08);
+  border-left: 1px solid #f0f0f0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Close Button - top left */
+.close-btn {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #e74c3c;
+}
+
+/* Heading */
+.report-container h4 {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Textarea */
+.custom-textarea {
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  transition: border 0.2s ease;
+}
+
+.custom-textarea:focus {
+  border-color: #0d6efd;
+  outline: none;
+  background-color: #fff;
+}
+
+/* Helper text */
+.form-text {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Submit button */
+.btn-success {
+  padding: 0.75rem;
+  border-radius: 0.6rem;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(25, 135, 84, 0.1);
+  transition: background-color 0.2s;
+}
+
+.btn-success:hover {
+  background-color: #198754;
+}

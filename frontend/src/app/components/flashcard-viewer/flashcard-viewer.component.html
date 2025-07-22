@@ -1,0 +1,103 @@
+<div class="container-fluid py-4 px-3" *ngIf="set">
+  <!-- Header -->
+  <div class="viewer-header d-flex justify-content-between align-items-center shadow-sm p-3 mb-4 rounded bg-white">
+    <button class="btn btn-link text-dark p-0" (click)="goBack()">
+      <i class="bi bi-arrow-left fs-5"></i>
+    </button>
+    <div class="text-center flex-grow-1">
+      <h5 class="mb-0 fw-semibold">{{ set.title }}</h5>
+      <small class="text-muted">{{ currentIndex + 1 }} / {{ set.cards.length }}</small>
+    </div>
+    <button class="btn btn-link text-dark p-0" (click)="closeViewer()">
+      <i class="bi bi-x-lg fs-6"></i>
+    </button>
+  </div>
+
+  <!-- Flashcard Display with Flip -->
+  <div class="card-container mb-4 position-relative">
+    <div
+      class="card-content"
+      [class.flipped]="isFlipped"
+      (click)="flip()"
+    >
+      <div class="front card-face">
+        {{ currentCard.question }}
+      </div>
+      <div class="back card-face">
+        {{ currentCard.answer }}
+      </div>
+    </div>
+
+    <!-- Bookmark Icon -->
+    <button class="btn btn-sm position-absolute start-0 bottom-0 m-3 bookmark-btn" (click)="toggleBookmark()">
+      <i class="bi" [ngClass]="{
+        'bi-bookmark-fill text-primary': bookmarked,
+        'bi-bookmark': !bookmarked
+      }"></i>
+    </button>
+  </div>
+
+  <!-- Flashcard Controls -->
+  <div class="d-flex justify-content-center align-items-center gap-3 mb-4">
+    <button class="btn btn-outline-secondary" (click)="prevCard()" [disabled]="currentIndex === 0">
+      <i class="bi bi-chevron-left"></i> Prev
+    </button>
+
+    <button class="btn btn-outline-dark" (click)="flip()">
+      <i class="bi bi-arrow-repeat"></i> Flip
+    </button>
+
+    <button class="btn btn-primary" (click)="nextCard()" [disabled]="currentIndex === set.cards.length - 1">
+      Next <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+
+  <!-- Tabs Navigation -->
+  <ul class="nav nav-tabs justify-content-center border-bottom mb-3">
+    <li class="nav-item" *ngFor="let tab of tabs">
+      <a class="nav-link px-4"
+         [class.active]="activeTab === tab.key"
+         (click)="setActiveTab(tab.key)">
+        <i [ngClass]="tab.icon" class="me-1"></i> {{ tab.label }}
+      </a>
+    </li>
+  </ul>
+
+  <!-- Tab Content -->
+  <div class="tab-content mt-4">
+    <div [ngSwitch]="activeTab">
+      <ng-container *ngSwitchCase="'flashcards'">
+        <div class="row g-3">
+          <div class="col-6 col-sm-4 col-md-3" *ngFor="let card of set.cards; let idx = index">
+            <div class="card small-card h-100 shadow-sm border"
+                 [class.border-primary]="idx === currentIndex"
+                 (click)="currentIndex = idx"
+                 style="cursor: pointer;">
+              <div class="card-body small text-center">
+                <div class="fw-bold mb-1">{{ idx + 1 }}</div>
+                <div>{{ card.question }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'videos'">
+        <app-video-tab [set]="set"></app-video-tab>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'resources'">
+        <app-resource-tab [set]="set"></app-resource-tab>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'quiz'">
+        <app-quiz-tab [set]="set"></app-quiz-tab>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'doubts'">
+        <app-doubt-tab [setId]="set._id!"></app-doubt-tab>
+      </ng-container>
+    </div>
+  </div>
+</div>
+

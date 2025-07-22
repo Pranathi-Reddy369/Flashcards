@@ -1,0 +1,111 @@
+.container {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Section heading */
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #004d40;
+  margin-bottom: 1.5rem;
+}
+
+/* Flashcard card */
+.flashcard-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  transition: box-shadow 0.3s ease;
+  background-color: #fff;
+  padding: 0.5rem;
+}
+
+.flashcard-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Delete icon top-right */
+.delete-icon-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #f8d7da;
+  color: #842029;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: background 0.2s ease;
+}
+
+.delete-icon-btn:hover {
+  background: #f5c2c7;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  background: #e0f2f1;
+  color: #00796b;
+  padding: 3px 8px;
+  margin: 0 4px 4px 0;
+  font-size: 0.75rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.tag:hover {
+  background: #b2dfdb;
+}
+
+/* Progress bar */
+.progress {
+  height: 6px;
+  background-color: #e9ecef;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background-color: #26a69a;
+}
+
+/* Action Buttons */
+.btn {
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: #00796b;
+}
+
+.edit-btn i {
+  font-size: 1.1rem;
+}
+
+/* Responsive Grid */
+@media (max-width: 576px) {
+  .flashcard-card {
+    padding: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

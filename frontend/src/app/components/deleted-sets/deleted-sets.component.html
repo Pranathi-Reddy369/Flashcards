@@ -1,0 +1,64 @@
+<h2 class="text-center mb-4">🗑️ Deleted Flashcard Sets</h2>
+
+<div *ngIf="deletedSets.length > 0; else emptyTrash">
+
+  <!-- View + Selection Toggle -->
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+    <div class="btn-group">
+      <button class="btn btn-outline-primary btn-sm"
+              [class.active]="viewMode === 'grid'"
+              (click)="viewMode = 'grid'">
+        🧱 Grid View
+      </button>
+      <button class="btn btn-outline-primary btn-sm"
+              [class.active]="viewMode === 'list'"
+              (click)="viewMode = 'list'">
+        📄 List View
+      </button>
+    </div>
+
+    <button class="btn btn-outline-primary btn-sm" (click)="toggleSelectionMode()">
+      {{ selectionMode ? 'Cancel Selection' : 'Select Sets' }}
+    </button>
+  </div>
+
+  <!-- Selection Controls -->
+  <div *ngIf="selectionMode" class="mb-3">
+    <label>
+      <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()" />
+      Select All
+    </label>
+    <button class="btn btn-success btn-sm ms-2" (click)="restoreSelected()">Restore Selected</button>
+    <button class="btn btn-danger btn-sm ms-2" (click)="deleteSelected()">Delete Permanently</button>
+  </div>
+
+  <!-- Flashcard Sets -->
+  <div>
+    <div *ngFor="let set of deletedSets"
+         class="card"
+         [ngClass]="{
+           'grid-card': viewMode === 'grid',
+           'list-card': viewMode === 'list'
+         }">
+      <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <div>
+          <div *ngIf="selectionMode" class="form-check d-inline me-2">
+            <input type="checkbox"
+                   class="form-check-input"
+                   [(ngModel)]="set.selected"
+                   (change)="checkIfAllSelected()" />
+          </div>
+          <strong>{{ set.title }}</strong>
+          <div class="text-muted small">{{ set.description }}</div>
+          <div class="text-muted small">Tags: {{ set.tags?.join(', ') }}</div>
+        </div>
+
+        <button class="btn btn-success btn-sm mt-2 mt-sm-0" (click)="restoreSet(set)">Restore</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyTrash>
+  <p class="text-muted text-center mt-4">🧹 Trash is empty. Nothing to restore!</p>
+</ng-template>

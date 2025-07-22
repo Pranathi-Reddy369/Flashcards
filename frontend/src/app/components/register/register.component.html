@@ -1,0 +1,93 @@
+<nav class="navbar fixed-top">
+  <div class="navbar-left">
+    <span class="brand-text">Learn <strong>Now</strong></span>
+  </div>
+  <div class="navbar-right">
+    <a class="signup-btn" routerLink="/">Login</a>
+  </div>
+</nav>
+
+<div class="register-wrapper d-flex">
+  <!-- Left: Form Section -->
+  <div class="register-form peacock-gradient text-white p-5 d-flex flex-column justify-content-center w-50">
+    <div class="w-100" style="max-width: 450px; margin: auto;">
+      <h2 class="mb-4 text-center fw-bold">Create your Account</h2>
+
+      <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="firstName" name="firstName"
+            [(ngModel)]="user.firstName" required placeholder="First Name" />
+          <label for="firstName">First Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="lastName" name="lastName"
+            [(ngModel)]="user.lastName" required placeholder="Last Name" />
+          <label for="lastName">Last Name</label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Gender</label><br />
+          <div class="form-check form-check-inline text-white">
+            <input class="form-check-input" type="radio" name="gender" id="male" value="Male"
+              [(ngModel)]="user.gender" required />
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline text-white">
+            <input class="form-check-input" type="radio" name="gender" id="female" value="Female"
+              [(ngModel)]="user.gender" required />
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+          <div class="form-check form-check-inline text-white">
+            <input class="form-check-input" type="radio" name="gender" id="other" value="Other"
+              [(ngModel)]="user.gender" required />
+            <label class="form-check-label" for="other">Other</label>
+          </div>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="date" class="form-control" id="joined" name="joined"
+            [(ngModel)]="user.joined" required />
+          <label for="joined">Joining Date</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="email" name="email"
+            [(ngModel)]="user.email" required placeholder="Email" />
+          <label for="email">Email</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="password" name="password"
+            [(ngModel)]="user.password" required minlength="6" placeholder="Password" />
+          <label for="password">Password</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+            [(ngModel)]="user.confirmPassword" required placeholder="Confirm Password" />
+          <label for="confirmPassword">Confirm Password</label>
+        </div>
+
+        <!-- Error -->
+        <div *ngIf="user.password !== user.confirmPassword && registerForm.submitted"
+          class="text-warning small mb-2">
+          Passwords do not match.
+        </div>
+
+        <!-- Button -->
+        <button type="submit" class="btn btn-light text-dark w-100 py-2 fw-semibold"
+          [disabled]="registerForm.invalid || user.password !== user.confirmPassword">
+          Sign Up
+        </button>
+      </form>
+
+      <!-- Success/Error -->
+      <div class="alert alert-success mt-3" *ngIf="successMessage">{{ successMessage }}</div>
+      <div class="alert alert-danger mt-3" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </div>
+  </div>
+
+  <!-- Right: Image/Illustration -->
+  <div class="register-image w-50 d-none d-md-block"></div>
+</div>

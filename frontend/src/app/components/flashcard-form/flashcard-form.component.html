@@ -1,0 +1,96 @@
+<div class="container mt-4">
+  <h2>{{ editing ? 'Edit' : 'Create' }} Flashcard Set</h2>
+
+  <form #setForm="ngForm" (ngSubmit)="saveSet()" novalidate>
+    <!-- Title -->
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        id="title"
+        class="form-control"
+        name="title"
+        required
+        [(ngModel)]="set.title"
+      />
+      <div class="text-danger" *ngIf="setForm.submitted && !set.title">Title is required.</div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input
+        type="text"
+        id="description"
+        class="form-control"
+        name="description"
+        [(ngModel)]="set.description"
+      />
+    </div>
+
+    <!-- Tags -->
+    <div class="form-group">
+      <label>Tags (comma separated)</label>
+      <input
+        [(ngModel)]="tagsInput"
+        type="text"
+        class="form-control"
+        placeholder="e.g. Angular, Web, JavaScript"
+        name="tags"
+      />
+    </div>
+
+    <!-- Flashcards -->
+    <div *ngFor="let card of set.cards; let i = index" class="mb-3 border p-3 rounded">
+      <h5>Card {{ i + 1 }}</h5>
+      
+      <div class="mb-2">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Question"
+          name="question{{ i }}"
+          [(ngModel)]="card.question"
+          required
+        />
+      </div>
+
+      <div class="mb-2">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Answer"
+          name="answer{{ i }}"
+          [(ngModel)]="card.answer"
+          required
+        />
+      </div>
+
+      <!-- Difficulty Dropdown -->
+      <div class="mb-2">
+        <label for="difficulty{{ i }}" class="form-label">Difficulty</label>
+        <select
+          id="difficulty{{ i }}"
+          class="form-select"
+          name="difficulty{{ i }}"
+          [(ngModel)]="card.difficulty"
+          required
+        >
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn btn-sm btn-danger" (click)="removeCard(i)" *ngIf="set.cards.length > 1">
+        Remove
+      </button>
+    </div>
+
+    <button type="button" class="btn btn-secondary mb-3" (click)="addCard()">+ Add Card</button>
+
+    <div class="d-grid">
+      <button class="btn btn-success" [disabled]="!setForm.form.valid">📂 Save Set</button>
+    </div>
+  </form>
+</div>

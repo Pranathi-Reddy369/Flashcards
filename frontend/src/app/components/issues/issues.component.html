@@ -1,0 +1,14 @@
+<!-- report-issue.component.html -->
+<div class="report-container">
+  <button class="close-btn" (click)="close()"><i class="bi bi-x-lg"></i></button>
+
+  <h4>Report an issue</h4>
+
+  <form (ngSubmit)="submit()">
+    <textarea [(ngModel)]="message" name="message" class="form-control custom-textarea" placeholder="Type your query here..."></textarea>
+
+    <div class="form-text">📎 You can also attach screenshots later via email if needed.</div>
+
+    <button type="submit" class="btn btn-success w-100">Send</button>
+  </form>
+</div>
