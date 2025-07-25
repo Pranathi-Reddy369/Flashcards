@@ -1,93 +1,120 @@
-<nav class="navbar fixed-top">
+<nav class="navbar fixed-top shadow-sm bg-white px-3">
   <div class="navbar-left">
-    <span class="brand-text">Learn <strong>Now</strong></span>
+    <span class="brand-text fs-4 fw-bold">Learn <strong class="text-primary">Now</strong></span>
   </div>
-  <div class="navbar-right">
-    <a class="signup-btn" routerLink="/">Login</a>
+  <div class="navbar-right ms-auto">
+    <a class="btn btn-outline-primary" routerLink="/login">Login</a>
   </div>
 </nav>
 
-<div class="register-wrapper d-flex">
+<div class="register-wrapper d-flex flex-column flex-md-row min-vh-100 pt-5 mt-4">
   <!-- Left: Form Section -->
-  <div class="register-form peacock-gradient text-white p-5 d-flex flex-column justify-content-center w-50">
-    <div class="w-100" style="max-width: 450px; margin: auto;">
+  <div class="register-form peacock-gradient text-white p-4 p-md-5 d-flex align-items-center w-100 w-md-50">
+    <div class="w-100" style="max-width: 500px; margin: auto;">
       <h2 class="mb-4 text-center fw-bold">Create your Account</h2>
 
-      <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+      <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" novalidate>
+        <!-- First Name -->
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="firstName" name="firstName"
-            [(ngModel)]="user.firstName" required placeholder="First Name" />
+            [(ngModel)]="user.firstName" required placeholder="First Name" #firstName="ngModel" />
           <label for="firstName">First Name</label>
+          <div *ngIf="firstName.invalid && firstName.touched" class="text-warning small">
+            First name is required.
+          </div>
         </div>
 
+        <!-- Last Name -->
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="lastName" name="lastName"
-            [(ngModel)]="user.lastName" required placeholder="Last Name" />
+            [(ngModel)]="user.lastName" required placeholder="Last Name" #lastName="ngModel" />
           <label for="lastName">Last Name</label>
+          <div *ngIf="lastName.invalid && lastName.touched" class="text-warning small">
+            Last name is required.
+          </div>
         </div>
 
+        <!-- Gender -->
         <div class="mb-3">
           <label class="form-label">Gender</label><br />
           <div class="form-check form-check-inline text-white">
             <input class="form-check-input" type="radio" name="gender" id="male" value="Male"
-              [(ngModel)]="user.gender" required />
+              [(ngModel)]="user.gender" required #gender="ngModel" />
             <label class="form-check-label" for="male">Male</label>
           </div>
           <div class="form-check form-check-inline text-white">
             <input class="form-check-input" type="radio" name="gender" id="female" value="Female"
-              [(ngModel)]="user.gender" required />
+              [(ngModel)]="user.gender" />
             <label class="form-check-label" for="female">Female</label>
           </div>
           <div class="form-check form-check-inline text-white">
             <input class="form-check-input" type="radio" name="gender" id="other" value="Other"
-              [(ngModel)]="user.gender" required />
+              [(ngModel)]="user.gender" />
             <label class="form-check-label" for="other">Other</label>
+          </div>
+          <div *ngIf="gender.invalid && registerForm.submitted" class="text-warning small mt-1">
+            Please select a gender.
           </div>
         </div>
 
+        <!-- Joined Date -->
         <div class="form-floating mb-3">
           <input type="date" class="form-control" id="joined" name="joined"
-            [(ngModel)]="user.joined" required />
+            [(ngModel)]="user.joined" required #joined="ngModel" />
           <label for="joined">Joining Date</label>
+          <div *ngIf="joined.invalid && joined.touched" class="text-warning small">
+            Joining date is required.
+          </div>
         </div>
 
+        <!-- Email -->
         <div class="form-floating mb-3">
           <input type="email" class="form-control" id="email" name="email"
-            [(ngModel)]="user.email" required placeholder="Email" />
+            [(ngModel)]="user.email" required placeholder="Email" #email="ngModel" />
           <label for="email">Email</label>
+          <div *ngIf="email.invalid && email.touched" class="text-warning small">
+            Valid email is required.
+          </div>
         </div>
 
+        <!-- Password -->
         <div class="form-floating mb-3">
           <input type="password" class="form-control" id="password" name="password"
-            [(ngModel)]="user.password" required minlength="6" placeholder="Password" />
+            [(ngModel)]="user.password" required minlength="6" placeholder="Password" #password="ngModel" />
           <label for="password">Password</label>
+          <div *ngIf="password.invalid && password.touched" class="text-warning small">
+            Password must be at least 6 characters.
+          </div>
         </div>
 
+        <!-- Confirm Password -->
         <div class="form-floating mb-3">
           <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
-            [(ngModel)]="user.confirmPassword" required placeholder="Confirm Password" />
+            [(ngModel)]="user.confirmPassword" required placeholder="Confirm Password" #confirmPassword="ngModel" />
           <label for="confirmPassword">Confirm Password</label>
+          <div *ngIf="confirmPassword.invalid && confirmPassword.touched" class="text-warning small">
+            Confirm password is required.
+          </div>
         </div>
 
-        <!-- Error -->
-        <div *ngIf="user.password !== user.confirmPassword && registerForm.submitted"
-          class="text-warning small mb-2">
+        <!-- Password Match Error -->
+        <div *ngIf="user.password !== user.confirmPassword && registerForm.submitted" class="text-warning small mb-2">
           Passwords do not match.
         </div>
 
-        <!-- Button -->
+        <!-- Submit Button -->
         <button type="submit" class="btn btn-light text-dark w-100 py-2 fw-semibold"
           [disabled]="registerForm.invalid || user.password !== user.confirmPassword">
           Sign Up
         </button>
       </form>
 
-      <!-- Success/Error -->
+      <!-- Success/Error Messages -->
       <div class="alert alert-success mt-3" *ngIf="successMessage">{{ successMessage }}</div>
       <div class="alert alert-danger mt-3" *ngIf="errorMessage">{{ errorMessage }}</div>
     </div>
   </div>
 
   <!-- Right: Image/Illustration -->
-  <div class="register-image w-50 d-none d-md-block"></div>
+  <div class="register-image w-100 w-md-50 d-none d-md-block bg-light"></div>
 </div>

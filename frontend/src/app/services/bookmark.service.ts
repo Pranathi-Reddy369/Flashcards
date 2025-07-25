@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, switchMap, of } from 'rxjs';
 import { Bookmark } from '../models/app.model';
@@ -7,46 +7,53 @@ import { Bookmark } from '../models/app.model';
   providedIn: 'root'
 })
 export class BookmarkService {
-  private baseUrl = 'http://localhost:3002/bookmarks';
+  private baseUrl = 'http://localhost:4000/bookmarks';
 
   constructor(private http: HttpClient) {}
 
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token') || '';
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  }
+
   getAll(): Observable<Bookmark[]> {
-    return this.http.get<Bookmark[]>(this.baseUrl);
+    return this.http.get<Bookmark[]>(this.baseUrl, {
+      headers: this.getAuthHeaders()
+    });
   }
 
   add(bookmark: Bookmark): Observable<Bookmark> {
-    return this.http.post<Bookmark>(this.baseUrl, bookmark);
+    return this.http.post<Bookmark>(this.baseUrl, bookmark, {
+      headers: this.getAuthHeaders()
+    });
   }
 
-  /**
-   * Remove bookmark by setId and cardId combination
-   */
   remove(setId: string, cardId: number): Observable<any> {
     return this.findByCard(setId, cardId).pipe(
       switchMap((bookmarks) => {
         if (bookmarks.length > 0) {
-          const bookmarkId = bookmarks[0].id;
-          return this.http.delete(`${this.baseUrl}/${bookmarkId}`);
+          // Use _id here for deleting
+          const bookmarkId = bookmarks[0]._id;
+          return this.http.delete(`${this.baseUrl}/${bookmarkId}`, {
+            headers: this.getAuthHeaders()
+          });
         }
         return of(null);
       })
     );
   }
 
-  /**
-   * Check if a specific card in a set is already bookmarked
-   */
   isBookmarked(setId: string, cardId: number): Observable<boolean> {
     return this.findByCard(setId, cardId).pipe(
       map((bookmarks) => bookmarks.length > 0)
     );
   }
 
-  /**
-   * Finds all bookmarks for a specific setId + cardId
-   */
   findByCard(setId: string, cardId: number): Observable<Bookmark[]> {
-    return this.http.get<Bookmark[]>(`${this.baseUrl}?setId=${setId}&cardId=${cardId}`);
+    return this.http.get<Bookmark[]>(`${this.baseUrl}/set/${setId}?cardId=${cardId}`, {
+      headers: this.getAuthHeaders()
+    });
   }
 }

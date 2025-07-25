@@ -64,11 +64,18 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  loadSets() {
-    this.flashcardService.getAllSets().subscribe(data => {
+loadSets() {
+  this.flashcardService.getAllSets().subscribe({
+    next: (data) => {
+      console.log('Flashcard Sets from backend:', data); // ✅ Check this
       this.flashcardSets = data;
-    });
-  }
+    },
+    error: (err) => {
+      console.error('Error fetching sets:', err); // ✅ Show if token or CORS fails
+    }
+  });
+}
+
 
   get filteredSets(): FlashcardSet[] {
     const term = this.searchTerm.trim().toLowerCase();

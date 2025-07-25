@@ -11,14 +11,18 @@
       <div>
         <p><strong>{{ thread.user }}</strong>: {{ thread.question }}</p>
         <button
-  class="btn btn-sm"
-  [ngClass]="thread.likedByUser ? 'btn-success' : 'btn-outline-secondary'"
-  (click)="upvote(thread.id)"
->
-  <i class="bi" [ngClass]="thread.likedByUser ? 'bi-hand-thumbs-up-fill' : 'bi-hand-thumbs-up'"></i>
-  {{ thread.upvotes }}
-</button>
+          class="btn btn-sm me-2"
+          [ngClass]="thread.likedByUser ? 'btn-success' : 'btn-outline-secondary'"
+          (click)="upvote(thread._id!)"
+        >
+          <i class="bi" [ngClass]="thread.likedByUser ? 'bi-hand-thumbs-up-fill' : 'bi-hand-thumbs-up'"></i>
+          {{ thread.upvotes }}
+        </button>
 
+        <!-- ✅ Delete Button -->
+        <button class="btn btn-sm btn-outline-danger" (click)="deleteDoubt(thread._id!)">
+          <i class="bi bi-trash"></i>
+        </button>
       </div>
     </div>
 
@@ -29,11 +33,11 @@
     <div class="input-group input-group-sm mt-2">
       <input
         type="text"
-        [(ngModel)]="replyMap[thread.id]"
+        [(ngModel)]="replyMap[thread._id!]"
         class="form-control"
         placeholder="Reply to this doubt..."
       />
-      <button class="btn btn-secondary" (click)="addReply(thread.id)">Reply</button>
+      <button class="btn btn-secondary" (click)="addReply(thread._id!)">Reply</button>
     </div>
   </div>
 </div>

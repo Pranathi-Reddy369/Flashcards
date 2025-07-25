@@ -108,12 +108,12 @@ export class FlashcardViewerComponent implements OnInit, OnDestroy{
         });
       } else {
         this.bookmarkService.add({
-          id: Date.now().toString(),
-          setId,
-          cardId: card.id,
-          question: card.question,
-          answer: card.answer
-        }).subscribe(() => {
+  setId,
+  cardId: card.id,
+  question: card.question,
+  answer: card.answer
+})
+.subscribe(() => {
           console.log('Bookmarked');
           this.checkBookmark();
         });

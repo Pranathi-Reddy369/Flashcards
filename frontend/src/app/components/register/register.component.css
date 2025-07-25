@@ -1,0 +1,273 @@
+/* Navbar */
+.navbar {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 1rem;
+  z-index: 1050;
+}
+
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.signup-btn {
+  background-color: transparent;
+  color: #007bff;
+  border: 2px solid #007bff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.signup-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Register Wrapper */
+.register-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  margin-top: 56px;
+  overflow: hidden;
+}
+
+/* Form Section */
+.register-form {
+  flex: 1 1 50%;
+  background: linear-gradient(135deg, #3b8d99, #6b6b83, #aa4b6b);
+  color: white;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInLeft 1s ease;
+}
+
+.register-form h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.register-form .form-control {
+  border-radius: 12px;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.register-form .form-control:focus {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  border: 2px solid white;
+}
+
+.register-form .form-floating > label {
+  color: #6c757d;
+}
+
+.register-form .btn {
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.register-form .btn:hover {
+  transform: scale(1.02);
+}
+
+.alert {
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+/* Image Section */
+.register-image {
+  flex: 1 1 50%;
+  background-image: url('https://cdni.iconscout.com/illustration/premium/thumb/sign-up-illustration-download-in-svg-png-gif-file-formats--new-user-registering-log-register-form-maggy-pack-design-development-illustrations-4097209.png');
+  background-size: cover;
+  background-position: center;
+  animation: fadeInRight 1s ease;
+}
+
+/* Error Styles */
+.ng-invalid.ng-touched:not(form) {
+  border: 2px solid #ffc107;
+  box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+
+.error-text {
+  font-size: 0.85rem;
+  color: #ffc107;
+  margin-top: -0.5rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .register-wrapper {
+    flex-direction: column;
+  }
+
+  .register-form,
+  .register-image {
+    flex: 1 1 100%;
+    width: 100%;
+    height: auto;
+  }
+
+  .register-form {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-form h2 {
+    font-size: 1.6rem;
+  }
+
+  .register-form {
+    padding: 1.5rem 1rem;
+  }
+
+  .register-form .form-control {
+    font-size: 0.95rem;
+  }
+
+  .register-form .btn {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .register-form {
+    padding: 1rem;
+  }
+
+  .register-form h2 {
+    font-size: 1.4rem;
+  }
+
+  .navbar .brand-text {
+    font-size: 1.25rem;
+  }
+
+  .signup-btn {
+    font-size: 0.9rem;
+    padding: 4px 12px;
+  }
+
+  .register-image {
+    display: none;
+  }
+}
+/* Gradient background & basic layout */
+.signup-container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.form-section {
+  flex: 1 1 50%;
+  padding: 40px;
+  background: linear-gradient(to right, #2980b9, #8e44ad);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-section h2 {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.gender-group {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.signup-btn {
+  width: 100%;
+  border-radius: 25px;
+  padding: 12px;
+  font-weight: bold;
+  background-color: #fff;
+  color: #333;
+}
+
+.image-section {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7f7;
+}
+
+.image-section img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  padding: 30px;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+  }
+
+  .form-section {
+    flex: 1 1 100%;
+    padding: 20px;
+  }
+
+  .image-section {
+    display: none;
+  }
+}

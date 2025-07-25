@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DoubtThread } from '../../models/app.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,8 +10,8 @@ import { DoubtService } from '../../services/doubt.service';
   templateUrl: './doubt-tab.component.html',
   styleUrl: './doubt-tab.component.css'
 })
-export class DoubtTabComponent {  
-   @Input() setId!: string;
+export class DoubtTabComponent implements OnInit {  
+  @Input() setId!: string;
   doubts: DoubtThread[] = [];
   newDoubt = '';
   replyMap: { [key: string]: string } = {};
@@ -32,7 +32,7 @@ export class DoubtTabComponent {
     if (!this.newDoubt.trim()) return;
 
     const newThread: DoubtThread = {
-      id: Date.now().toString(),
+      _id: undefined,
       setId: this.setId,
       user: 'Anonymous',
       question: this.newDoubt,
@@ -41,38 +41,50 @@ export class DoubtTabComponent {
     };
 
     this.doubtService.addDoubt(newThread).subscribe((created) => {
-      this.doubts.unshift(created); // Reflect immediately in UI
+      this.doubts.unshift(created);
       this.newDoubt = '';
     });
   }
 
-  addReply(doubtId: string) {
-    const reply = this.replyMap[doubtId];
+  addReply(threadId: string | undefined) {
+    if (!threadId) return;
+
+    const reply = this.replyMap[threadId];
     if (!reply?.trim()) return;
 
-    const thread = this.doubts.find(d => d.id === doubtId);
+    const thread = this.doubts.find(d => d._id === threadId);
     if (thread) {
       thread.responses.push({ user: 'User', answer: reply });
 
       this.doubtService.updateDoubt(thread).subscribe(() => {
-        this.replyMap[doubtId] = '';
+        this.replyMap[threadId] = '';
       });
     }
   }
 
- upvote(doubtId: string) {
-  const thread = this.doubts.find(d => d.id === doubtId);
-  if (thread) {
-    if (thread.likedByUser) {
-      thread.upvotes -= 1;
-      thread.likedByUser = false;
-    } else {
-      thread.upvotes += 1;
-      thread.likedByUser = true;
-    }
+  upvote(threadId: string | undefined) {
+    if (!threadId) return;
 
-    this.doubtService.updateDoubt(thread).subscribe();
+    const thread = this.doubts.find(d => d._id === threadId);
+    if (thread) {
+      if (thread.likedByUser) {
+        thread.upvotes -= 1;
+        thread.likedByUser = false;
+      } else {
+        thread.upvotes += 1;
+        thread.likedByUser = true;
+      }
+
+      this.doubtService.updateDoubt(thread).subscribe();
+    }
   }
+  deleteDoubt(threadId: string) {
+  if (!threadId) return;
+
+  this.doubtService.deleteDoubt(threadId).subscribe(() => {
+    // Remove from local list after successful deletion
+    this.doubts = this.doubts.filter(d => d._id !== threadId);
+  });
 }
 
 }

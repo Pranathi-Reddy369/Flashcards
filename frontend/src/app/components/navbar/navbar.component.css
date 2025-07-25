@@ -1,137 +1,156 @@
-.navbar {
-  background-color: var(--navbar-bg);
-  color: var(--text-color);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.navbar .nav-link,
-.navbar .dropdown-item {
-  color: var(--text-color);
-}
-
-.navbar .nav-link:hover,
-.navbar .dropdown-item:hover {
-  color: var(--highlight-color);
-}
-
-input[type="search"] {
-  background-color: var(--input-bg);
-  color: var(--input-text);
-}
-
-.dropdown-menu {
-  background-color: var(--dropdown-bg);
-  color: var(--text-color);
-}
-
-.btn-outline-secondary,
-.btn-outline-primary {
-  color: var(--text-color);
-  border-color: var(--border-color);
-}
-
-.btn-outline-secondary:hover,
-.btn-outline-primary:hover {
-  background-color: var(--highlight-color);
-  color: white;
-}
+/* Reset common */
 * {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* Navbar */
+/* Navbar base */
 .navbar {
-  background-color: #ffffff;
-  padding: 0.75rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #e0e0e0;
+  background-color: var(--navbar-bg, #fff);
+  color: var(--text-color, #333);
+  border-bottom: 1px solid var(--border-color, #ddd);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1030;
+  padding: 0.75rem 1.5rem;
 }
 
-.navbar .brand {
+/* Brand styling */
+.brand-text {
   font-size: 1.5rem;
   font-weight: 700;
   color: #004d40;
+  letter-spacing: -0.5px;
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.navbar .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.navbar .nav-links a {
-  text-decoration: none;
-  color: #004d40;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.navbar .nav-links a:hover {
+.brand-text strong {
   color: #009688;
 }
 
-.navbar .profile-icon {
+/* Search Box */
+.search-box {
+  width: 50%;
+  min-width: 260px;
+  max-width: 600px;
+  background-color: #f1f1f1;
+  transition: all 0.3s ease;
+}
+
+.search-box input[type="search"] {
+  background-color: transparent;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.search-box input::placeholder {
+  color: #888;
+  font-weight: 400;
+}
+
+
+.btn-icon {
+  background-color: transparent;
+  border: none;
+  padding: 6px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Profile dropdown circle */
+.btn-light.rounded-circle {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #004d40;
-  transition: transform 0.3s ease;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.navbar .profile-icon:hover {
-  transform: scale(1.05);
+/* Dropdown menu */
+.dropdown-menu {
+  background-color: var(--dropdown-bg, #fff);
+  color: var(--text-color, #333);
+  border-radius: 0.5rem;
+  min-width: 250px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Streak button style */
+.streak-dropdown {
+  max-width: 320px;
+  width: 100%;
+}
+
+/* Responsive fixes */
+@media (max-width: 991.98px) {
+  .search-box {
+    display: none !important;  
+  }
+}
+
+@media (max-width: 767.98px) {
   .navbar {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    align-items: stretch;
+    padding: 0.75rem 1rem;
   }
 
-  .navbar .nav-links {
+  .navbar .container-fluid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .navbar .brand-text {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .navbar .d-flex.gap-3 {
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 0.75rem;
+  }
+
+  .btn-light.rounded-circle,
+  .btn-icon {
+    font-size: 1.25rem;
   }
 }
 
+@media (max-width: 575.98px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
 
+  .btn-light.rounded-pill {
+    padding: 4px 12px;
+    font-size: 0.85rem;
+  }
 
-
-
-
-
-
-
- .brand-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #004d40; /* Dark green for "Learn" */
-  letter-spacing: -0.5px;
-  text-decoration: none;
+  .navbar .dropdown-menu {
+    font-size: 0.9rem;
+  }
+}
+a.dropdown-toggle::after {
+  display: none !important;
 }
 
- .brand-text strong {
-  color: #009688; /* Teal for "Now" */
+.navbar {
+  transform: translateY(-100%);
+  animation: slideDown 0.6s ease forwards;
+}
+
+@keyframes slideDown {
+  to {
+    transform: translateY(0);
+  }
 }

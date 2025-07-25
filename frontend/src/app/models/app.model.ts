@@ -45,14 +45,13 @@ export interface QuizQuestion {
   answer: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
 }
-
 export interface DoubtThread {
-  id: string;
+  _id?: string;            // MongoDB ID, optional when creating a new doubt
   setId: string;
   user: string;
   question: string;
   upvotes: number;
-  likedByUser?: boolean; // 👈 Track if user has liked
+  likedByUser?: boolean;   // Track if the user liked the doubt
   responses: Response[];
 }
 
@@ -63,9 +62,9 @@ export interface Response {
 }
 
 export interface Bookmark {
-  id: string;          // stored as a string using Date.now().toString()
-  setId: string;
-  cardId: number;
+  _id?: string;               // MongoDB id, optional on create, present on fetch
+  setId: string;              // The flashcard set this bookmark belongs to
+  cardId: number;             // The card id inside the set
   question: string;
   answer: string;
 }
@@ -135,8 +134,9 @@ export interface StreakStats {
   longestStreak: number;
 }
 export interface Contact {
-  id?: number;
+  _id?: string;         // 🔁 changed from id → _id
   name: string;
   email: string;
   message: string;
 }
+

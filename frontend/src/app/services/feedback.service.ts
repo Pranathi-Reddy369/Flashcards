@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Feedback } from '../models/app.model';
 import { Observable } from 'rxjs';
@@ -8,16 +8,23 @@ import { Observable } from 'rxjs';
 })
 export class FeedbackService {
 
- private apiUrl = 'http://localhost:3002/feedbacks';
+  private apiUrl = 'http://localhost:4000/feedback';
 
   constructor(private http: HttpClient) {}
 
   submitFeedback(feedback: Feedback): Observable<Feedback> {
-    return this.http.post<Feedback>(this.apiUrl, feedback);
+    const token = localStorage.getItem('token') || '';
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.post<Feedback>(this.apiUrl, feedback, { headers });
   }
 
-  // Optional: Get all feedback
   getAllFeedback(): Observable<Feedback[]> {
-    return this.http.get<Feedback[]>(this.apiUrl);
+    const token = localStorage.getItem('token') || '';
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get<Feedback[]>(this.apiUrl, { headers });
   }
 }

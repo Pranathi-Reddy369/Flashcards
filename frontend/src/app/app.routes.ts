@@ -20,7 +20,6 @@ import { authGuard } from './guards/auth.guard';
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'explore', component: ExploreComponent, canActivate: [authGuard] },
   { path: 'feedback-form', component: FeedbackFormComponent, canActivate: [authGuard] },
