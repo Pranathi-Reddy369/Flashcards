@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Contact = require('../models/Contact');
 
-// POST: Submit contact message
+
 router.post('/', async (req, res) => {
   try {
     const newContact = new Contact(req.body);
@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET: Fetch all contact messages (admin usage)
+
 router.get('/', async (req, res) => {
   try {
     const messages = await Contact.find().sort({ date: -1 });

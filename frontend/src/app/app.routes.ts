@@ -28,7 +28,7 @@ import { authGuard } from './guards/auth.guard';
   {
     path: 'edit/:id',
     component: FlashcardFormComponent,
-    canActivate: [authGuard, validSetGuard] // both guards applied
+    canActivate: [authGuard, validSetGuard]
   },
   {
     path: 'view/:id',

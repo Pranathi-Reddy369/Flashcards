@@ -2,7 +2,6 @@
   <h2>{{ editing ? 'Edit' : 'Create' }} Flashcard Set</h2>
 
   <form #setForm="ngForm" (ngSubmit)="saveSet()" novalidate>
-    <!-- Title -->
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
       <input
@@ -16,7 +15,6 @@
       <div class="text-danger" *ngIf="setForm.submitted && !set.title">Title is required.</div>
     </div>
 
-    <!-- Description -->
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
       <input
@@ -28,7 +26,6 @@
       />
     </div>
 
-    <!-- Tags -->
     <div class="form-group">
       <label>Tags (comma separated)</label>
       <input
@@ -40,7 +37,6 @@
       />
     </div>
 
-    <!-- Flashcards -->
     <div *ngFor="let card of set.cards; let i = index" class="mb-3 border p-3 rounded">
       <h5>Card {{ i + 1 }}</h5>
       
@@ -66,7 +62,6 @@
         />
       </div>
 
-      <!-- Difficulty Dropdown -->
       <div class="mb-2">
         <label for="difficulty{{ i }}" class="form-label">Difficulty</label>
         <select

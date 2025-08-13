@@ -82,7 +82,6 @@ export class DoubtTabComponent implements OnInit {
   if (!threadId) return;
 
   this.doubtService.deleteDoubt(threadId).subscribe(() => {
-    // Remove from local list after successful deletion
     this.doubts = this.doubts.filter(d => d._id !== threadId);
   });
 }

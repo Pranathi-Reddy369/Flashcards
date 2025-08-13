@@ -25,7 +25,7 @@ export class IssuesComponent {
     };
 
     this.reportService.sendIssue(issue).subscribe(() => {
-      this.offcanvas.dismiss(); // Close the side panel
+      this.offcanvas.dismiss();
     });
   }
 

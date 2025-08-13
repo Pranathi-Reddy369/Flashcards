@@ -1,8 +1,6 @@
 <h2 class="text-center mb-4">🗑️ Deleted Flashcard Sets</h2>
 
 <div *ngIf="deletedSets.length > 0; else emptyTrash">
-
-  <!-- View + Selection Toggle -->
   <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
     <div class="btn-group">
       <button class="btn btn-outline-primary btn-sm"
@@ -22,7 +20,6 @@
     </button>
   </div>
 
-  <!-- Selection Controls -->
   <div *ngIf="selectionMode" class="mb-3">
     <label>
       <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()" />
@@ -32,7 +29,7 @@
     <button class="btn btn-danger btn-sm ms-2" (click)="deleteSelected()">Delete Permanently</button>
   </div>
 
-  <!-- Flashcard Sets -->
+
   <div>
     <div *ngFor="let set of deletedSets"
          class="card"

@@ -28,7 +28,7 @@ onLogin() {
     },
     error: e => {
       alert(e.error.message || 'Login failed');
-      // Optionally don't redirect immediately on error, let user retry
+    
     }
   });
 }

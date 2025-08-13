@@ -12,9 +12,7 @@ private timer$: Subscription | null = null;
   constructor(private activityService: ActivityService) {}
 
   startTracking() {
-    if (this.timer$) return; // prevent duplicate timers
-
-    // Every 60 seconds
+    if (this.timer$) return; 
     this.timer$ = interval(60000).subscribe(() => {
       this.minutes++;
       this.activityService.updateTodayActivity({ minutesWatched: this.minutes }).subscribe();

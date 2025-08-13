@@ -22,13 +22,10 @@ export class BookmarksComponent {
   ngOnInit() {
     this.bookmarkService.getAll().subscribe(bookmarks => {
       this.bookmarks = bookmarks;
-
-      // Clear flashcards before pushing new ones (to avoid duplicates)
       this.flashcards = [];
 
       bookmarks.forEach(b => {
         this.flashcardService.getSet(b.setId).subscribe(set => {
-          // Assuming set.cards is an array with objects that have 'id' property
           const card = set.cards.find((c: { id: number }) => c.id === b.cardId);
           if (card) {
             this.flashcards.push({ setTitle: set.title, ...card });

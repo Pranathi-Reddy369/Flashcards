@@ -6,15 +6,15 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const User = require('./models/User');
+const User = require('./models/user');
 const FlashcardSet = require('./models/FlashcardSet');
 const Doubts = require('./models/Doubts')
 
-// ⬇️ Import all routes
+//  Import all routes
 const flashcardRoutes = require('./routes/flashcard.routes');
 const issueRoutes = require('./routes/issues.routes');
 const feedbackRoutes = require('./routes/feedback.routes');
-const bookmarkRoutes = require('./routes/bookmark.routes');  // ✅ NEW
+const bookmarkRoutes = require('./routes/bookmark.routes'); 
 const doubtRoutes = require('./routes/doubts.routes'); 
 const contactRoutes = require('./routes/contact.routes');
 
@@ -25,7 +25,6 @@ app.use(express.json());
 
 const SECRET_KEY = process.env.JWT_SECRET || 'yourSecretKey';
 
-// ✅ MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -33,7 +32,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('✅ MongoDB connected'))
 .catch(err => console.error('❌ MongoDB connection failed', err));
 
-// ✅ JWT Middleware
+
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader?.split(' ')[1];
@@ -46,7 +45,7 @@ function authenticateToken(req, res, next) {
   });
 }
 
-// ✅ Signup Route
+
 app.post('/signup', async (req, res) => {
   const { firstName, lastName, email, password, gender, joined } = req.body;
   try {
@@ -63,7 +62,7 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-// ✅ Login Route
+
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -81,7 +80,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Example using Express
+
 app.get('/users/:id', async (req, res) => {
   const user = await User.findById(req.params.id);
   if (!user) {
@@ -89,7 +88,7 @@ app.get('/users/:id', async (req, res) => {
   }
   res.json(user);
 });
-// 🔄 Update user
+
 app.put('/users/:id', authenticateToken, async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
@@ -105,7 +104,7 @@ app.put('/users/:id', authenticateToken, async (req, res) => {
   }
 });
 
-// ❌ Delete user
+
 app.delete('/users/:id', authenticateToken, async (req, res) => {
   try {
     const deletedUser = await User.findByIdAndDelete(req.params.id);
@@ -118,7 +117,7 @@ app.delete('/users/:id', authenticateToken, async (req, res) => {
 });
 
 
-// ✅ Protected Routes
+
 app.use('/flashcards', authenticateToken, flashcardRoutes);
 app.use('/issues', authenticateToken, issueRoutes);
 app.use('/feedback', authenticateToken, feedbackRoutes);
@@ -128,7 +127,6 @@ app.use('/contacts', authenticateToken, contactRoutes);
 
 
 
-// ✅ Start Server
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);

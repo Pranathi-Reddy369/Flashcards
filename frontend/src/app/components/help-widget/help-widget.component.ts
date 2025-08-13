@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Feedback } from '../../models/app.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FeedbackService } from '../../services/feedback.service';
 
 @Component({
   selector: 'app-help-widget',
@@ -9,19 +12,56 @@ import { RouterLink } from '@angular/router';
   styleUrl: './help-widget.component.css'
 })
 export class HelpWidgetComponent {
-   menuOpen = false;
+   feedbacks: Feedback[] = [];
+  feedbackForm!: FormGroup;
+  submitting = false;
+  errorMessage = '';
+  successMessage = '';
 
-  constructor(private eRef: ElementRef) {}
+  constructor(private feedbackService: FeedbackService, private fb: FormBuilder) {}
 
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
+  ngOnInit(): void {
+    this.loadFeedbacks();
+
+    this.feedbackForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', Validators.required],
+      rating: [5, [Validators.required, Validators.min(1), Validators.max(5)]]
+    });
   }
 
-  @HostListener('document:click', ['$event'])
-  handleClickOutside(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    if (!this.eRef.nativeElement.contains(target)) {
-      this.menuOpen = false;
-    }
+  loadFeedbacks(): void {
+    this.feedbackService.getAllFeedback().subscribe({
+      next: (data) => this.feedbacks = data.reverse(),
+      error: (err) => this.errorMessage = 'Failed to load feedbacks'
+    });
   }
+
+  onSubmit(): void {
+    if (this.feedbackForm.invalid) return;
+
+    this.submitting = true;
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    const feedback: Feedback = {
+      ...this.feedbackForm.value,
+      date: new Date().toISOString()
+    };
+
+    this.feedbackService.submitFeedback(feedback).subscribe({
+      next: (newFeedback) => {
+        this.feedbacks.unshift(newFeedback);
+        this.feedbackForm.reset({ rating: 5 });
+        this.successMessage = 'Thank you for your feedback!';
+        this.submitting = false;
+      },
+      error: (err) => {
+        this.errorMessage = 'Failed to submit feedback.';
+        this.submitting = false;
+      }
+    });
+  }
+
 }

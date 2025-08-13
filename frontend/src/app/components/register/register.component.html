@@ -8,13 +8,11 @@
 </nav>
 
 <div class="register-wrapper d-flex flex-column flex-md-row min-vh-100 pt-5 mt-4">
-  <!-- Left: Form Section -->
   <div class="register-form peacock-gradient text-white p-4 p-md-5 d-flex align-items-center w-100 w-md-50">
     <div class="w-100" style="max-width: 500px; margin: auto;">
       <h2 class="mb-4 text-center fw-bold">Create your Account</h2>
 
       <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" novalidate>
-        <!-- First Name -->
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="firstName" name="firstName"
             [(ngModel)]="user.firstName" required placeholder="First Name" #firstName="ngModel" />
@@ -24,7 +22,6 @@
           </div>
         </div>
 
-        <!-- Last Name -->
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="lastName" name="lastName"
             [(ngModel)]="user.lastName" required placeholder="Last Name" #lastName="ngModel" />
@@ -34,7 +31,6 @@
           </div>
         </div>
 
-        <!-- Gender -->
         <div class="mb-3">
           <label class="form-label">Gender</label><br />
           <div class="form-check form-check-inline text-white">
@@ -57,7 +53,6 @@
           </div>
         </div>
 
-        <!-- Joined Date -->
         <div class="form-floating mb-3">
           <input type="date" class="form-control" id="joined" name="joined"
             [(ngModel)]="user.joined" required #joined="ngModel" />
@@ -67,7 +62,6 @@
           </div>
         </div>
 
-        <!-- Email -->
         <div class="form-floating mb-3">
           <input type="email" class="form-control" id="email" name="email"
             [(ngModel)]="user.email" required placeholder="Email" #email="ngModel" />
@@ -77,7 +71,6 @@
           </div>
         </div>
 
-        <!-- Password -->
         <div class="form-floating mb-3">
           <input type="password" class="form-control" id="password" name="password"
             [(ngModel)]="user.password" required minlength="6" placeholder="Password" #password="ngModel" />
@@ -87,7 +80,6 @@
           </div>
         </div>
 
-        <!-- Confirm Password -->
         <div class="form-floating mb-3">
           <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
             [(ngModel)]="user.confirmPassword" required placeholder="Confirm Password" #confirmPassword="ngModel" />
@@ -97,24 +89,20 @@
           </div>
         </div>
 
-        <!-- Password Match Error -->
         <div *ngIf="user.password !== user.confirmPassword && registerForm.submitted" class="text-warning small mb-2">
           Passwords do not match.
         </div>
 
-        <!-- Submit Button -->
         <button type="submit" class="btn btn-light text-dark w-100 py-2 fw-semibold"
           [disabled]="registerForm.invalid || user.password !== user.confirmPassword">
           Sign Up
         </button>
       </form>
 
-      <!-- Success/Error Messages -->
       <div class="alert alert-success mt-3" *ngIf="successMessage">{{ successMessage }}</div>
       <div class="alert alert-danger mt-3" *ngIf="errorMessage">{{ errorMessage }}</div>
     </div>
   </div>
 
-  <!-- Right: Image/Illustration -->
   <div class="register-image w-100 w-md-50 d-none d-md-block bg-light"></div>
 </div>

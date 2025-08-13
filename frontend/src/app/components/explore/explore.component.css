@@ -2,7 +2,6 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Section heading */
 h2 {
   font-size: 2rem;
   font-weight: 600;
@@ -10,7 +9,7 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
-/* Flashcard card */
+
 .flashcard-card {
   border: 1px solid #e0e0e0;
   border-radius: 12px;
@@ -23,7 +22,7 @@ h2 {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* Delete icon top-right */
+
 .delete-icon-btn {
   position: absolute;
   top: 6px;
@@ -45,7 +44,7 @@ h2 {
   background: #f5c2c7;
 }
 
-/* Tags */
+
 .tag {
   display: inline-block;
   background: #e0f2f1;
@@ -62,7 +61,7 @@ h2 {
   background: #b2dfdb;
 }
 
-/* Progress bar */
+
 .progress {
   height: 6px;
   background-color: #e9ecef;
@@ -74,7 +73,7 @@ h2 {
   background-color: #26a69a;
 }
 
-/* Action Buttons */
+
 .btn {
   font-size: 0.85rem;
   padding: 6px 10px;
@@ -99,7 +98,7 @@ h2 {
   font-size: 1.1rem;
 }
 
-/* Responsive Grid */
+
 @media (max-width: 576px) {
   .flashcard-card {
     padding: 1rem;

@@ -34,7 +34,6 @@ export class BookmarkService {
     return this.findByCard(setId, cardId).pipe(
       switchMap((bookmarks) => {
         if (bookmarks.length > 0) {
-          // Use _id here for deleting
           const bookmarkId = bookmarks[0]._id;
           return this.http.delete(`${this.baseUrl}/${bookmarkId}`, {
             headers: this.getAuthHeaders()

@@ -7,11 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class IssuesService {
-  private api = 'http://localhost:4000/issues';  // ✅ updated to hit the correct route
+  private api = 'http://localhost:4000/issues';  
 
   constructor(private http: HttpClient) {}
-
-  // Save a new issue
   sendIssue(issue: Issue): Observable<Issue> {
     const token = localStorage.getItem('token');
     const headers = {
@@ -20,7 +18,6 @@ export class IssuesService {
     return this.http.post<Issue>(this.api, issue, { headers });
   }
 
-  // Get all issues
   getIssues(): Observable<Issue[]> {
     const token = localStorage.getItem('token');
     const headers = {

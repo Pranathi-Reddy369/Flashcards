@@ -1,4 +1,4 @@
-/* Global Reset */
+
 body, html {
   margin: 0;
   padding: 0;
@@ -8,13 +8,13 @@ body, html {
   overflow-x: hidden;
 }
 
-/* Split Layout */
+
 .login-split-layout {
   display: flex;
   min-height: 100vh;
 }
 
-/* Left Image Side - ✅ updated image */
+
 .login-image-side {
   flex: 1;
   background-image: url('https://courses.iid.org.in/public/frontend/images/register.png');
@@ -22,7 +22,7 @@ body, html {
   background-position: center;
 }
 
-/* Right Form Side */
+
 .login-container {
   flex: 1;
   display: flex;
@@ -44,16 +44,6 @@ body, html {
   animation: fadeIn 0.8s ease-in;
 }
 
-/* Navbar */
-
-
-
-
-
-
-
-
-/* Form Elements */
 input {
   width: 100%;
   padding: 0.75rem;
@@ -161,7 +151,7 @@ h2 {
   background: white;
 }
 
-/* Google button */
+
 .google-btn {
   display: flex;
   align-items: center;
@@ -185,7 +175,7 @@ h2 {
   height: 20px;
 }
 
-/* Fade in animation */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -197,7 +187,7 @@ h2 {
   }
 }
 
-/* Mobile */
+
 @media (max-width: 768px) {
   .login-split-layout {
     flex-direction: column;
@@ -217,7 +207,7 @@ h2 {
     box-shadow: none;
   }
 }
-/* Navbar Base */
+
 .navbar {
   background-color: #ffffff;
   padding: 0.75rem 2rem;
@@ -231,7 +221,7 @@ h2 {
   z-index: 1000;
 }
 
-/* Brand Text */
+
 .navbar-left .brand-text {
   font-size: 1.5rem;
   font-weight: 700;
@@ -243,7 +233,6 @@ h2 {
   color: #009688;
 }
 
-/* Right side (Login button) */
 .navbar-right .signup-btn {
   padding: 8px 18px;
   border: 2px solid #004d40;
@@ -261,7 +250,7 @@ h2 {
   box-shadow: 0 4px 10px rgba(0, 77, 64, 0.1);
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;

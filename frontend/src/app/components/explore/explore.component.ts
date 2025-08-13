@@ -47,7 +47,7 @@ export class ExploreComponent {
   }
 
   onSearchChange(term: string) {
-    this.searchService.setSearchTerm(term); // Keeps shared usage intact
+    this.searchService.setSearchTerm(term);
   }
 
   countByDifficulty(cards: Flashcard[], level: 'Easy' | 'Medium' | 'Hard'): number {
@@ -69,7 +69,7 @@ export class ExploreComponent {
     if (confirmDelete) {
       this.flashcardService.deleteSet(id).subscribe(() => {
         this.flashcardSets = this.flashcardSets.filter(set => set._id !== id);
-        this.filterSets(); // update filtered sets after deletion
+        this.filterSets(); 
       });
     }
   }

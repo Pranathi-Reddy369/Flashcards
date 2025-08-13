@@ -1,5 +1,4 @@
 <div class="profile-dashboard container" *ngIf="user">
-  <!-- Header Section -->
   <div class="dashboard-header d-flex align-items-center justify-content-between px-4 py-4 text-white shadow-sm">
     <div>
       <h2 class="fw-bold mb-1 animate-fade-in">Hi, {{ user.firstName }}!</h2>
@@ -16,7 +15,6 @@
     </div>
   </div>
 
-  <!-- Main Content -->
   <div class="profile-content card mt-4 p-4 shadow-sm animate-slide-up">
     <form *ngIf="editing; else viewMode" (ngSubmit)="saveChanges()">
       <div class="row g-4">
@@ -53,7 +51,6 @@
       </div>
     </form>
 
-    <!-- View Mode -->
     <ng-template #viewMode>
       <div class="row g-4">
         <div class="col-md-6">
@@ -69,7 +66,6 @@
     </ng-template>
   </div>
 
-  <!-- Footer -->
   <footer class="text-center mt-5 p-3 small text-muted">
     © 2025 Learn Now • Made with ❤️ for learning
   </footer>

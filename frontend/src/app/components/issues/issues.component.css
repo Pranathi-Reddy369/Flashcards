@@ -12,7 +12,7 @@
   font-family: 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Close Button - top left */
+
 .close-btn {
   position: absolute;
   top: 1.5rem;
@@ -29,7 +29,7 @@
   color: #e74c3c;
 }
 
-/* Heading */
+
 .report-container h4 {
   margin-top: 2.5rem;
   margin-bottom: 2rem;
@@ -39,7 +39,7 @@
   text-align: center;
 }
 
-/* Textarea */
+
 .custom-textarea {
   width: 100%;
   min-height: 140px;
@@ -58,7 +58,7 @@
   background-color: #fff;
 }
 
-/* Helper text */
+
 .form-text {
   font-size: 0.85rem;
   color: #6c757d;
@@ -67,7 +67,7 @@
   text-align: left;
 }
 
-/* Submit button */
+
 .btn-success {
   padding: 0.75rem;
   border-radius: 0.6rem;

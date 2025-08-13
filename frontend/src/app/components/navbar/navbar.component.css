@@ -1,9 +1,9 @@
-/* Reset common */
+
 * {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Navbar base */
+
 .navbar {
   background-color: var(--navbar-bg, #fff);
   color: var(--text-color, #333);
@@ -15,7 +15,6 @@
   padding: 0.75rem 1.5rem;
 }
 
-/* Brand styling */
 .brand-text {
   font-size: 1.5rem;
   font-weight: 700;
@@ -29,7 +28,7 @@
   color: #009688;
 }
 
-/* Search Box */
+
 .search-box {
   width: 50%;
   min-width: 260px;
@@ -61,7 +60,7 @@
   transform: scale(1.1);
 }
 
-/* Profile dropdown circle */
+
 .btn-light.rounded-circle {
   width: 40px;
   height: 40px;
@@ -71,7 +70,6 @@
   justify-content: center;
 }
 
-/* Dropdown menu */
 .dropdown-menu {
   background-color: var(--dropdown-bg, #fff);
   color: var(--text-color, #333);
@@ -84,13 +82,13 @@
   background-color: #f8f9fa;
 }
 
-/* Streak button style */
+
 .streak-dropdown {
   max-width: 320px;
   width: 100%;
 }
 
-/* Responsive fixes */
+
 @media (max-width: 991.98px) {
   .search-box {
     display: none !important;  
@@ -143,6 +141,57 @@
 a.dropdown-toggle::after {
   display: none !important;
 }
+
+.dropdown-menu-end {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+.feedback-item {
+  background-color: #f9f9f9;
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.feedback-item:hover {
+  background-color: #f1f1f1;
+}
+
+
+.feedback-item p {
+  margin: 0.25rem 0;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+
+.feedback-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+
+.feedback-item strong {
+  font-size: 0.9rem;
+  color: #1f2937;
+}
+
+
+.no-feedback {
+  font-size: 0.85rem;
+  color: #999;
+  padding: 1rem 0;
+  text-align: center;
+}
+
 
 .navbar {
   transform: translateY(-100%);

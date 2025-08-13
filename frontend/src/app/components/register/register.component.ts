@@ -31,7 +31,6 @@ export class RegisterComponent {
     this.errorMessage = '';
     this.successMessage = '';
 
-    // Simple validation
     if (!this.user.firstName.trim() || !this.user.lastName.trim() || !this.user.email.trim() || !this.user.password) {
       this.errorMessage = 'All fields are required.';
       return;
@@ -47,7 +46,6 @@ export class RegisterComponent {
       return;
     }
 
-    // Set joined date if not already set
     this.user.joined = new Date().toISOString();
 
     const newUser = {

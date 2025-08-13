@@ -1,26 +1,48 @@
-<!-- Floating Help Button -->
-<div class="help-button" (click)="toggleMenu()">
-  <span class="question-icon">?</span>
-</div>
+<div class="container py-4">
+  <h3 class="mb-4">📢 Share Your Feedback</h3>
 
-<!-- Popup Menu -->
-<div class="help-menu" *ngIf="menuOpen">
-  <div class="help-section">
-    <h4>GETTING STARTED</h4>
-    <ul>
-      <li><i class="icon">❓</i> Help center</li>
-      <li>
-          <a routerLink="/help-assistant"><i class="icon">💬</i> Help assistant</a>
-      </li>
-     <li>
-        <a routerLink="/feedback-form"><i class="icon">💡</i> Submit feedback / Request feature</a>
-    </li>
+  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="card p-4 shadow-sm mb-5">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input formControlName="name" class="form-control" placeholder="Your name" />
+    </div>
 
-    </ul>
-    <hr />
-    <h4>GENERAL</h4>
-    <ul>
-      <li><i class="icon">ℹ️</i> What's new</li>
-    </ul>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input formControlName="email" class="form-control" placeholder="Your email" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Message</label>
+      <textarea formControlName="message" class="form-control" rows="4" placeholder="Write your feedback..."></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Rating</label>
+      <select formControlName="rating" class="form-select">
+        <option *ngFor="let r of [5,4,3,2,1]" [value]="r">{{ r }} ⭐</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="submitting || feedbackForm.invalid">
+      {{ submitting ? 'Submitting...' : 'Submit Feedback' }}
+    </button>
+
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+  </form>
+
+  <h4 class="mb-3">📝 Recent Feedback</h4>
+  <div *ngIf="feedbacks.length === 0" class="text-muted">No feedbacks yet.</div>
+
+  <div *ngFor="let fb of feedbacks" class="card mb-3 shadow-sm">
+    <div class="card-body">
+      <h6 class="card-title mb-1">{{ fb.name }} <small class="text-muted">({{ fb.email }})</small></h6>
+      <p class="mb-1">{{ fb.message }}</p>
+      <div>
+        <span class="text-warning">★</span> {{ fb.rating }}/5
+        <span class="text-muted float-end">{{ fb.date | date: 'short' }}</span>
+      </div>
+    </div>
   </div>
 </div>

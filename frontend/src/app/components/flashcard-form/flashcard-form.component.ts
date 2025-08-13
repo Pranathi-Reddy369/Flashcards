@@ -54,7 +54,7 @@ export class FlashcardFormComponent implements OnInit {
       id: Date.now(),
       question: '',
       answer: '',
-      difficulty: 'Easy' // ✅ default difficulty
+      difficulty: 'Easy'
     });
   }
 

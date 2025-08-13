@@ -1,4 +1,3 @@
-/* refer.component.css */
 .refer-container {
   max-width: 1000px;
   margin: auto;
@@ -61,7 +60,6 @@
   color: #666;
 }
 
-/* Rewards Panel */
 .rewards-panel {
   margin: 2rem 0;
   display: flex;
@@ -99,7 +97,6 @@
   max-width: 300px;
 }
 
-/* Hall of Fame */
 .hall-of-fame {
   margin-top: 2rem;
 }
@@ -134,7 +131,6 @@
   font-weight: bold;
 }
 
-/* Laptop Winners */
 .laptop-winners {
   margin-top: 2rem;
 }
@@ -160,7 +156,6 @@
   height: 60px;
 }
 
-/* Sidebar */
 .refer-sidebar {
   position: fixed;
   top: 80px;

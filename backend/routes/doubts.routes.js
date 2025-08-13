@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Doubt = require('../models/Doubts');
 
-// POST: Create new doubt
+
 router.post('/', async (req, res) => {
   try {
     const newDoubt = new Doubt(req.body);
@@ -14,7 +14,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET: Fetch all doubts
 router.get('/', async (req, res) => {
   try {
     const doubts = await Doubt.find();
@@ -24,7 +23,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// PUT: Update a doubt (reply or upvote)
+
 router.put('/:id', async (req, res) => {
   try {
     const updated = await Doubt.findByIdAndUpdate(req.params.id, req.body, { new: true });

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Issue = require('../models/issues');
 
-// Create a new issue (POST /)
+
 router.post('/', async (req, res) => {
   try {
     const newIssue = new Issue(req.body);
@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get all issues (GET /)
+
 router.get('/', async (req, res) => {
   try {
     const issues = await Issue.find();

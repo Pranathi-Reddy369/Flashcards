@@ -7,8 +7,9 @@
   import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
   import { IssuesComponent } from '../issues/issues.component';
   import { IssuesService } from '../../services/issues.service';
-import { DailyActivity, StreakStats } from '../../models/app.model';
+import { DailyActivity, Feedback, StreakStats } from '../../models/app.model';
 import { ActivityService } from '../../services/activity.service';
+import { FeedbackService } from '../../services/feedback.service';
 
   @Component({
     selector: 'app-navbar',
@@ -17,11 +18,12 @@ import { ActivityService } from '../../services/activity.service';
     styleUrl: './navbar.component.css'
   })
   export class NavbarComponent {
+    feedbacks: Feedback[] = [];
   searchTerm: string = '';
   selectedTheme: string = 'auto';
   darkMode: boolean = false;
 
-  // 🔥 New properties for streak and activity
+
   todayActivity: DailyActivity = {
     date: '',
     minutesWatched: 0,
@@ -39,11 +41,11 @@ import { ActivityService } from '../../services/activity.service';
     private modalService: NgbModal,
     private offcanvasService: NgbOffcanvas,
     private reportService: IssuesService,
-    private activityService: ActivityService // ✅ Injected new service
+    private activityService: ActivityService,
+    private feedbackService: FeedbackService
   ) {}
 
   ngOnInit() {
-    // Theme logic
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme') || 'auto';
       this.selectedTheme = savedTheme;
@@ -51,9 +53,9 @@ import { ActivityService } from '../../services/activity.service';
       this.applyTheme(savedTheme);
     }
 
-    // ✅ Fetch today's activity and streak data
+ 
     this.activityService.getTodayActivity().subscribe(data => {
-      console.log("Today's activity: ", data); // 👈 Add this
+      console.log("Today's activity: ", data);
       if (data) this.todayActivity = data;
     });
 
@@ -108,5 +110,16 @@ import { ActivityService } from '../../services/activity.service';
       panelClass: 'issue-panel',
       backdrop: true
     });
+  }
+  onDropdownToggle(isOpen: boolean): void {
+    if (isOpen) {
+      this.feedbackService.getAllFeedback().subscribe({
+        next: (data) => (this.feedbacks = data.reverse().slice(0, 5)), 
+        error: (err) => {
+          console.error('Failed to load feedbacks:', err);
+          this.feedbacks = [];
+        },
+      });
+    }
   }
   }

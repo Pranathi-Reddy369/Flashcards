@@ -23,14 +23,13 @@ export class DoubtService {
   }
 
   addDoubt(doubt: Omit<DoubtThread, '_id'>): Observable<DoubtThread> {
-    // When creating, don't send _id
     return this.http.post<DoubtThread>(this.apiUrl, doubt, { headers: this.getAuthHeaders() });
   }
 
   updateDoubt(doubt: DoubtThread): Observable<DoubtThread> {
     return this.http.put<DoubtThread>(`${this.apiUrl}/${doubt._id}`, doubt, { headers: this.getAuthHeaders() });
   }
-   // ✅ DELETE method
+
   deleteDoubt(id: string): Observable<{ message: string }> {
     return this.http.delete<{ message: string }>(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() });
   }

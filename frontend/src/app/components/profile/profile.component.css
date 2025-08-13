@@ -39,7 +39,7 @@ input[disabled] {
   cursor: not-allowed;
 }
 
-/* Animations */
+
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(-10px); }
   100% { opacity: 1; transform: translateY(0); }
@@ -58,7 +58,6 @@ input[disabled] {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
 @media (max-width: 576px) {
   .dashboard-header {
     flex-direction: column;
@@ -70,7 +69,6 @@ input[disabled] {
     margin-top: 1rem;
   }
 }
-/* Navbar */
 .navbar {
   background-color: #ffffff;
   padding: 0.75rem 2rem;

@@ -3,7 +3,6 @@
   <div class="row g-4">
     <div *ngFor="let set of filteredSets" class="col-12 col-sm-6 col-md-4 col-lg-3">
       <div class="card flashcard-card h-100 position-relative">
-        <!-- Delete button -->
         <button class="delete-icon-btn" (click)="deleteSet(set._id!)" title="Delete">
           <i class="bi bi-x"></i>
         </button>
@@ -18,14 +17,12 @@
             Hard: {{ countByDifficulty(set.cards, 'Hard') }}
           </div>
 
-          <!-- Tags -->
           <div class="mb-2">
             <span *ngFor="let tag of set.tags" class="badge bg-light text-secondary border me-1">
               #{{ tag }}
             </span>
           </div>
 
-          <!-- Progress Bar -->
           <div class="progress mb-2" style="height: 6px;">
             <div
               class="progress-bar bg-info"

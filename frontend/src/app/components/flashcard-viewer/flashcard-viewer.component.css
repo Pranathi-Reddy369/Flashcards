@@ -6,19 +6,18 @@
   --highlight: #f3e8ff;
 }
 
-/* Main Viewer Header */
+
 .viewer-header {
   background-color: #fff;
   border-radius: 24px;
 }
 
-/* Card Flip Container */
 .card-container {
   perspective: 1000px;
   height: 240px;
 }
 
-/* Flipping Card */
+
 .card-content {
   position: relative;
   width: 100%;
@@ -54,7 +53,7 @@
   transform: rotateY(180deg);
 }
 
-/* Bookmark Button */
+
 .bookmark-btn {
   background-color: #fff;
   border-radius: 8px;
@@ -62,7 +61,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Tab Styling */
+
 .nav-tabs .nav-link {
   border: none;
   color: #888;
@@ -76,7 +75,7 @@
   font-weight: 600;
 }
 
-/* Small Card Grid */
+
 .small-card {
   border-radius: 12px;
   border: 1px solid var(--border-color);
@@ -88,7 +87,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Control Buttons */
 button.btn {
   min-width: 90px;
   font-size: 0.9rem;

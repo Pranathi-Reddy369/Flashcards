@@ -1,4 +1,4 @@
-/* Card container */
+
 .flashcard-card {
   border: 1px solid #e5e5e5;
   border-radius: 12px;
@@ -14,7 +14,7 @@
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* Delete icon in top-right */
+
 .delete-icon-btn {
   position: absolute;
   top: 10px;
@@ -32,7 +32,7 @@
   color: #dc3545;
 }
 
-/* Progress */
+
 .progress {
   background-color: #f1f1f1;
   height: 6px;
@@ -45,7 +45,6 @@
   transition: width 0.4s ease;
 }
 
-/* Tags */
 .tag {
   display: inline-block;
   background-color: #f2f2f2;
@@ -62,7 +61,7 @@
   background-color: #d6d6d6;
 }
 
-/* Edit icon (emoji for now) */
+
 .icon-btn {
   border: none;
   background: transparent;
@@ -197,7 +196,6 @@
   height: 48px;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -236,7 +234,6 @@
 
 
 
-/* ✅ General FAQ Section Styling */
 .faq-section {
   padding: 3rem 1rem;
   background-color: #ffffff;
@@ -250,7 +247,7 @@
   color: #222;
 }
 
-/* ✅ Accordion Button (Question) Styling */
+
 .accordion-button {
   background-color: white;
   color: #212529;
@@ -263,7 +260,7 @@
   margin-bottom: 6px;
 }
 
-/* ❌ Remove ALL outlines and shadows */
+
 .accordion-button:focus,
 .accordion-button:active,
 .accordion-button:not(.collapsed),
@@ -273,12 +270,10 @@
   border: none !important;
 }
 
-/* ✅ Optional: Hover effect */
 .accordion-button:hover {
   background-color: #f9f9f9;
 }
 
-/* ✅ Accordion Body (Answer) Styling */
 .accordion-body {
   background-color: #f5f5f5;
   color: #444;
@@ -288,7 +283,7 @@
   margin-top: 4px;
 }
 
-/* ✅ Accordion Item separation */
+
 .accordion-item {
   border: none;
   margin-bottom: 12px;
@@ -296,11 +291,10 @@
   overflow: hidden;
 }
 
-/* ✅ Smooth transitions */
+
 .accordion-collapse {
   transition: max-height 0.3s ease-in-out;
 }
-/* footer */
 
 
 .footer-animated {
@@ -350,7 +344,6 @@
   }
 }
 .footer-animated {
-  /* existing styles... */
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }

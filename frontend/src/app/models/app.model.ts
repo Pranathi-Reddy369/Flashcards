@@ -1,8 +1,5 @@
-// 🔵 Core Flashcard Models
-
-// app.model.ts
 export interface FlashcardSet {
-  _id?: string; // 👈 Add this line
+  _id?: string; 
   title: string;
   description: string;
   tags?: string[];
@@ -25,13 +22,12 @@ export interface Flashcard {
   isReviewed?: boolean;
 }
 
-// 🔗 Learning Extensions
+
 
 export interface VideoResource {
   title: string;
   url: string;
-  duration: string; // Format: e.g., "12:34"
-}
+  duration: string;}
 
 export interface ExternalResource {
   title: string;
@@ -46,12 +42,12 @@ export interface QuizQuestion {
   difficulty: 'Easy' | 'Medium' | 'Hard';
 }
 export interface DoubtThread {
-  _id?: string;            // MongoDB ID, optional when creating a new doubt
+  _id?: string;            
   setId: string;
   user: string;
   question: string;
   upvotes: number;
-  likedByUser?: boolean;   // Track if the user liked the doubt
+  likedByUser?: boolean;   
   responses: Response[];
 }
 
@@ -62,14 +58,13 @@ export interface Response {
 }
 
 export interface Bookmark {
-  _id?: string;               // MongoDB id, optional on create, present on fetch
-  setId: string;              // The flashcard set this bookmark belongs to
-  cardId: number;             // The card id inside the set
+  _id?: string;               
+  setId: string;              
+  cardId: number;             
   question: string;
   answer: string;
 }
 
-// 👤 User & Auth Models
 
 export interface User {
   _id?: string;
@@ -78,38 +73,38 @@ export interface User {
   lastName: string;
   email: string;
   password: string;
-  confirmPassword?: string; // frontend use only
+  confirmPassword?: string;
   joined: string;
   gender: string;
 }
 
-// ⭐ Feedback & Issues
+
 
 export interface Feedback {
   id?: number;
   name: string;
   email: string;
   message: string;
-  rating: number; // 1–5 stars
-  date: string;   // ISO format
+  rating: number; 
+  date: string;   
 }
 
 export interface Issue {
   id?: number;
   message: string;
-  date: string;   // ISO format
+  date: string;   
 }
 
-// 🎁 Referrals & Rewards
+
 
 export interface Referral {
   id: number;
-  referredBy: string;      // referral code of inviter
-  referredUser: string;    // email or ID of invited
+  referredBy: string;      
+  referredUser: string;    
   date: string;
   avatar?: string;
   name?: string;
-  referrals?: number;      // how many people they referred
+  referrals?: number;      
 }
 
 export interface UserRewards {
@@ -120,11 +115,11 @@ export interface UserRewards {
   };
 }
 
-// 🔥 Activity & Streaks
+
 
 export interface DailyActivity {
   id?: number;
-  date: string; // Format: YYYY-MM-DD
+  date: string; 
   minutesWatched: number;
   questionsAttempted: number;
 }
@@ -134,7 +129,7 @@ export interface StreakStats {
   longestStreak: number;
 }
 export interface Contact {
-  _id?: string;         // 🔁 changed from id → _id
+  _id?: string;         
   name: string;
   email: string;
   message: string;

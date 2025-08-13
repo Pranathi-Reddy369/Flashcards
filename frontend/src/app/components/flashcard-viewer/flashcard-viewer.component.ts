@@ -10,7 +10,6 @@ import { ResourceTabComponent } from '../resource-tab/resource-tab.component';
 import { QuizTabComponent } from '../quiz-tab/quiz-tab.component';
 import { DoubtTabComponent } from '../doubt-tab/doubt-tab.component';
 import { BookmarkService } from '../../services/bookmark.service';
-import { FlashcardTabComponent } from '../flashcard-tab/flashcard-tab.component';
 
 @Component({
   selector: 'app-flashcard-viewer',
@@ -154,7 +153,7 @@ export class FlashcardViewerComponent implements OnInit, OnDestroy{
     if (!card.isReviewed) {
       card.isReviewed = true;
       this.flashcardService.updateSet(this.set!._id!, this.set!).subscribe(() => {
-        console.log(`Card ${card.id} marked as reviewed ✅`);
+        console.log(`Card ${card.id} marked as reviewed `);
       });
     }
   }

@@ -14,7 +14,7 @@ import { SessionTrackerService } from './services/session-tracker.service';
 })
 export class AppComponent {
   title = 'learn-now';
-  showHelpWidget = true; // ✅ declare this
+  showHelpWidget = true;
 
   constructor(private router: Router, private tracker: SessionTrackerService) {
     this.router.events
@@ -28,7 +28,6 @@ export class AppComponent {
   shouldShowNavbar(): boolean {
     return !['/login', '/signup'].includes(this.router.url);
   }
-
 
   ngOnInit() {
     this.tracker.startTracking();

@@ -7,8 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ContactService {
-  private apiUrl = 'http://localhost:4000/contacts';  // your Node/Express endpoint
-
+  private apiUrl = 'http://localhost:4000/contacts'; 
   constructor(private http: HttpClient) {}
 
   private getAuthHeaders(): HttpHeaders {

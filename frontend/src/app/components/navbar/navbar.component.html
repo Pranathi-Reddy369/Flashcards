@@ -1,11 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 py-2">
   <div class="container-fluid d-flex justify-content-between align-items-center">
 
-    <!-- Logo -->
     <div class="d-flex align-items-center">
      <a routerLink="/home" class="brand-text">Learn <strong>Now</strong></a>
     </div>
-    <!-- Centered Search -->
+
     <form class="search-box mx-auto w-50 d-flex align-items-center bg-light px-3 py-1 rounded-3">
       <i class="bi bi-search text-muted me-2"></i>
       <input
@@ -18,37 +17,47 @@
       />
     </form>
 
-    <!-- Right icons and dropdowns -->
     <div class="d-flex align-items-center gap-3">
-      <!-- Notifications -->
-      <div ngbDropdown>
-        <button class="btn btn-icon" ngbDropdownToggle>
-          <i class="bi bi-bell fs-5"></i>
-        </button>
-        <div ngbDropdownMenu class="p-4 text-center">
-          <i class="bi bi-bell-fill fs-1 text-muted mb-3"></i>
-          <h6 class="fw-semibold">Updates to keep you on track</h6>
-          <p class="small text-muted">See personalised study reminders and updates from enrolled content.</p>
-        </div>
+
+       <div ngbDropdown (openChange)="onDropdownToggle($event)">
+  <button class="btn btn-icon" ngbDropdownToggle>
+    <i class="bi bi-bell fs-5"></i>
+  </button>
+  <div ngbDropdownMenu class="dropdown-menu-end p-3" style="width: 300px; max-height: 400px; overflow-y: auto;">
+    <div *ngIf="feedbacks.length > 0; else noFeedback">
+      <div *ngFor="let feedback of feedbacks" class="feedback-item">
+  <strong>{{ feedback.name }}</strong>
+  <p class="mb-1 small">{{ feedback.message }}</p>
+  <div class="feedback-meta">
+    <span>{{ feedback.date | date: 'short' }}</span>
+    <span class="badge bg-warning text-dark">{{ feedback.rating }}★</span>
+  </div>
+</div>
+
+    </div>
+    <ng-template #noFeedback>
+      <div class="text-center text-muted small">
+        <i class="bi bi-info-circle mb-2 fs-4"></i><br />
+        No feedback available.
       </div>
-         <!-- ✅ Create Set Button -->
+    </ng-template>
+  </div>
+</div>
+
           <a routerLink="/create" class="btn btn-icon" title="Create Set">
               <i class="bi bi-journal-plus fs-5 text-muted"></i>
           </a>
 
-<!-- Bookmarks -->
 <a routerLink="/bookmarks" class="btn btn-icon" title="Bookmarks">
   <i class="bi bi-bookmarks fs-5 text-muted"></i>
 </a>
 
 
 
-      <!-- Gift icon -->
       <a routerLink="/refer" class="btn btn-icon" title="Refer">
   <i class="bi bi-gift-fill text-danger fs-5"></i>
 </a>
 
-      <!-- Streak and Activity -->
 <div ngbDropdown>
   <button class="btn btn-light rounded-pill d-flex align-items-center gap-2 px-3" ngbDropdownToggle>
     <span class="text-muted">{{ todayActivity.minutesWatched }} min</span>
@@ -72,7 +81,6 @@
 </div>
 
 
-      <!-- Profile Dropdown -->
       <div ngbDropdown>
         <button class="btn btn-light rounded-circle p-1" ngbDropdownToggle>
           <i class="bi bi-person-circle fs-4"></i>
@@ -101,7 +109,7 @@
   </div>
 </nav>
 
-<!-- Terms Modal -->
+
 <ng-template #termsModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Terms & Conditions</h4>

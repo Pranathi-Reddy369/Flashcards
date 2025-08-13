@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const FlashcardSet = require('../models/FlashcardSet'); // Adjust path if needed
-
-// 🔹 GET all flashcard sets
+const FlashcardSet = require('../models/FlashcardSet'); 
 router.get('/', async (req, res) => {
   try {
     const sets = await FlashcardSet.find();
@@ -12,7 +10,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// 🔹 GET one flashcard set by ID
+
 router.get('/:id', async (req, res) => {
   try {
     const set = await FlashcardSet.findById(req.params.id);
@@ -23,7 +21,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// 🔹 POST: Create a new flashcard set
+
 router.post('/', async (req, res) => {
   const set = new FlashcardSet(req.body);
   try {
@@ -34,7 +32,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// 🔹 PUT: Update a flashcard set by ID
+
 router.put('/:id', async (req, res) => {
   try {
     const updatedSet = await FlashcardSet.findByIdAndUpdate(
@@ -49,7 +47,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// 🔹 DELETE: Delete a flashcard set by ID
+
 router.delete('/:id', async (req, res) => {
   try {
     const deletedSet = await FlashcardSet.findByIdAndDelete(req.params.id);

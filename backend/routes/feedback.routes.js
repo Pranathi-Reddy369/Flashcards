@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Feedback = require('../models/feedback');
 
-// POST /api/feedback - Submit feedback
+
 router.post('/', async (req, res) => {
   try {
     const feedback = new Feedback(req.body);
@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET /api/feedback - Get all feedbacks
+
 router.get('/', async (req, res) => {
   try {
     const feedbacks = await Feedback.find();
